@@ -66,7 +66,7 @@ def train(data_dir: str):
             steps += 1
 
             if steps % update_freq == 0:
-                wandb.log({'loss': running_loss/update_freq})
+                wandb.log({'loss': running_loss/update_freq}, step=steps)
                 logging.info(f'Steps: {steps} ; Loss: {running_loss/update_freq}')
                 running_loss = 0.0
         
