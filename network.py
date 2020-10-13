@@ -52,7 +52,10 @@ class Network(nn.Module):
                         Hswish()
                     )
         
-        self.output = nn.Linear(in_features=1024, out_features=100, bias=False)
+        self.output = nn.Sequential(
+                        nn.Dropout(p=0.2),
+                        nn.Linear(in_features=1024, out_features=100, bias=False)
+        )
 
     def forward(self, x):
         x = x.permute(0, 3, 1, 2).contiguous()      # check if axis permutation is required
@@ -143,3 +146,4 @@ if __name__ == "__main__":
 
     x = torch.rand(4, 224, 224, 3)
     y = model(x)
+    print(y.shape)
