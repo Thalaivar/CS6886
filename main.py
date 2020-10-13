@@ -22,7 +22,7 @@ transform_test = transforms.Compose([
                     ])
 
 def train(data_dir: str):
-    update_freq = 10000
+    update_freq = 1000
     wandb.init(project='mini-assignment-3')
 
     model = Network(in_channels=3)
@@ -46,7 +46,7 @@ def train(data_dir: str):
     train_data = datasets.CIFAR100(root=data_dir, train=True, transform=transform_train, download=True)
     dataloader = DataLoader(train_data, batch_size, shuffle=True, num_workers=4)
 
-    logging.info(f'Beginning training for {n_epochs} epochs ({n_epochs*len(dataloader)} steps) on device: {device}')
+    logging.info(f'Beginning training for {n_epochs} epochs ({n_epochs*len(dataloader)*batch_size} steps) on device: {device}')
     steps = 0
     running_loss = 0.0
     for _ in range(n_epochs):
