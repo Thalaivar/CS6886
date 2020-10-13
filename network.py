@@ -10,7 +10,7 @@ class Network(nn.Module):
         kernel_size = 3
         
         self.input_conv = nn.Sequential(
-                            nn.Conv2d(in_channels=in_channels, out_channels=16, kernel_size=3, stride=2),
+                            nn.Conv2d(in_channels=in_channels, out_channels=16, kernel_size=3, stride=2, padding=1),
                             Hswish(),
                             nn.BatchNorm2d(num_features=16)
                         )
@@ -45,6 +45,26 @@ class Network(nn.Module):
                         SEModule(channel=576),
                         Hswish()
                     )
+        in_channels = 576
+
+        self.avg_pool = nn.AdaptiveAvgPool2d(1)
+
+        self.conv2 = nn.Sequential(
+                        nn.Conv2d(in_channels=in_channels, out_channels=1024, stride=1, kernel_size=1),
+                        Hswish()
+                    )
+        
+        self.output = nn.Linear(in_features=1024, out_features=100, bias=False)
+
+    def forward(self, x):
+        x = x.permute(0, 3, 1, 2).contiguous()      # check if axis permutation is required
+        x = self.input_conv(x)
+        x = self.fuse_blocks(x)
+        x = self.conv1(x)
+        x = self.avg_pool(x)
+        x = self.conv2(x)
+        x = self.output(x.squeeze())
+        return x
         
 
 
@@ -53,9 +73,9 @@ class FuseBlock(nn.Module):
         super().__init__()
 
         self.conv1 = nn.Conv2d(in_channels, exp, kernel_size=1, stride=1, padding=0, bias=False)
-        self.conv2 = nn.Conv2d(exp, out_channels, kernel_size=1, stride=1, padding=0, bias=False)
+        self.conv2 = nn.Conv2d(2 * exp, out_channels, kernel_size=1, stride=1, padding=0, bias=False)
         
-        padding = math.ceil((K - 1) / 2) if stride == 1 else 0
+        padding = math.ceil((K - 1) / 2)
         self.depth_conv1 = nn.Conv2d(exp, exp, kernel_size=(1, K), stride=stride, padding=(0, padding), groups=exp, bias=False)
         self.depth_conv2 = nn.Conv2d(exp, exp, kernel_size=(K, 1), stride=stride, padding=(padding, 0), groups=exp, bias=False)
         
@@ -71,7 +91,6 @@ class FuseBlock(nn.Module):
         self.nonlinearity = nonlinearity
 
     def forward(self, x):
-        x = x.permute(0, 3, 1, 2).contiguous()      # check if axis permutation is required
         out1 = self.conv_bn1(self.nonlinearity(self.conv1(x)))
         
         out2 = self.dw_conv_bn1(self.depth_conv1(out1))
@@ -122,7 +141,7 @@ class Hswish(nn.Module):
         return x * F.relu6(x + 3., inplace=self.inplace) / 6.
 
 if __name__ == "__main__":
-    K, exp, in_c, out_c, stride, input_shape = 5, 10, 32, 64, 2, (128, 128)
-    model = FuseBlock(K, exp, stride, in_c, out_c, nn.ReLU(), squeeze_and_excite=True)
-    x = torch.rand(4, *input_shape, in_c)
+    model = Network(in_channels=3)
+
+    x = torch.rand(4, 224, 224, 3)
     y = model(x)
