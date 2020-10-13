@@ -7,6 +7,8 @@ import logging
 import wandb
 import torch.optim as optim
 
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
 transform_train = transforms.Compose([                                                                                                                                                  
                         transforms.RandomCrop(32, padding=4),                                                                                                                               
                         transforms.RandomHorizontalFlip(),                                                                                                                                  
@@ -24,6 +26,7 @@ def train(data_dir: str):
     wandb.init(project='mini-assignment-3')
 
     model = Network(in_channels=3)
+    model.to(device)
     model.train()
 
     wandb.watch(model)
@@ -43,11 +46,13 @@ def train(data_dir: str):
     train_data = datasets.CIFAR100(root=data_dir, train=True, transform=transform_train, download=True)
     dataloader = DataLoader(train_data, batch_size, shuffle=True, num_workers=4)
 
+    logging.info(f'Beginning training for {n_epochs} epochs ({n_epochs*len(dataloader)} steps) on device: {device}')
     steps = 0
     running_loss = 0.0
     for _ in range(n_epochs):
         for i, data in enumerate(dataloader, 0):
             inputs, labels = data
+            inputs, labels = inputs.to(device), labels.to(device)
 
             outputs = model(inputs)
             loss = criterion(outputs, labels)
