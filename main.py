@@ -33,7 +33,7 @@ def train(data_dir: str):
 
     # set these parameters
     batch_size = 64
-    lr = 1e-6
+    lr = 1e-4
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=lr)
     n_epochs = 1000
@@ -66,7 +66,7 @@ def train(data_dir: str):
             steps += 1
 
             if steps % update_freq == 0:
-                wandb.log({'steps': steps, 'loss': running_loss/update_freq})
+                wandb.log({'loss': running_loss/update_freq})
                 logging.info(f'Steps: {steps} ; Loss: {running_loss/update_freq}')
                 running_loss = 0.0
         
