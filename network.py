@@ -6,8 +6,6 @@ import torch.nn.functional as F
 class Network(nn.Module):
     def __init__(self, in_channels):
         super().__init__()
-
-        kernel_size = 3
         
         self.input_conv = nn.Sequential(
                             nn.Conv2d(in_channels=in_channels, out_channels=16, kernel_size=3, stride=2, padding=1),
