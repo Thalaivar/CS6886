@@ -36,12 +36,12 @@ def train(data_dir: str):
     batch_size = 64
     lr = 1e-4
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.SGD(model.parameters(), lr=lr)
+    optimizer = optim.Adam(model.parameters(), lr=lr)
     n_epochs = 1000
 
     wandb.config.batch_size = batch_size
     wandb.config.loss_fn = 'CE-Loss'
-    wandb.config.optimizer = 'SGD'
+    wandb.config.optimizer = 'Adams'
     wandb.config.lr = lr
 
     train_data = datasets.CIFAR100(root=data_dir, train=True, transform=transform_train, download=True)
@@ -89,8 +89,8 @@ def evaluate_model(model, dataloader):
             inputs, labels = data
             inputs, labels = inputs.to(device), labels.to(device)
 
-            outputs = model(inputs)
-            _, predicted = torch.max(outputs.cpu().data, 1)
+            outputs = model(inputs).cpu()
+            _, predicted = torch.max(outputs.data, 1)
 
             total += labels.shape[0]
             correct += (predicted == labels).sum().item()
