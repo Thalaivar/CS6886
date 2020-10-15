@@ -1,0 +1,297 @@
+Files already downloaded and verified
+Files already downloaded and verified
+INFO:root:Beginning training for 1000 epochs (782000 steps) on device: cuda:0
+INFO:root:Steps: 100 ; Loss: 4.605173020362854
+INFO:root:Steps: 200 ; Loss: 4.605536832809448
+INFO:root:Steps: 300 ; Loss: 4.605318651199341
+INFO:root:Steps: 400 ; Loss: 4.605001645088196
+INFO:root:Steps: 500 ; Loss: 4.605736536979675
+INFO:root:Steps: 600 ; Loss: 4.605143637657165
+INFO:root:Steps: 700 ; Loss: 4.6058280611038205
+INFO:root:Steps: 800 ; Loss: 4.60501091003418
+INFO:root:Steps: 900 ; Loss: 4.605249938964843
+INFO:root:Steps: 1000 ; Loss: 4.605400643348694
+INFO:root:Steps: 1100 ; Loss: 4.604758152961731
+INFO:root:Steps: 1200 ; Loss: 4.6054190826416015
+INFO:root:Steps: 1300 ; Loss: 4.6053797721862795
+INFO:root:Steps: 1400 ; Loss: 4.605552048683166
+INFO:root:Steps: 1500 ; Loss: 4.604947280883789
+INFO:root:Steps: 1600 ; Loss: 4.606073050498963
+INFO:root:Steps: 1700 ; Loss: 4.605280513763428
+INFO:root:Steps: 1800 ; Loss: 4.605092620849609
+INFO:root:Steps: 1900 ; Loss: 4.605473093986511
+INFO:root:Steps: 2000 ; Loss: 4.605669326782227
+INFO:root:Steps: 2100 ; Loss: 4.604748048782349
+INFO:root:Steps: 2200 ; Loss: 4.6056955671310424
+INFO:root:Steps: 2300 ; Loss: 4.605397477149963
+INFO:root:Steps: 2400 ; Loss: 4.605560660362244
+INFO:root:Steps: 2500 ; Loss: 4.605370755195618
+INFO:root:Steps: 2600 ; Loss: 4.6046661758422855
+INFO:root:Steps: 2700 ; Loss: 4.605184283256531
+INFO:root:Steps: 2800 ; Loss: 4.605836839675903
+INFO:root:Steps: 2900 ; Loss: 4.605845322608948
+INFO:root:Steps: 3000 ; Loss: 4.605503873825073
+INFO:root:Steps: 3100 ; Loss: 4.605988907814026
+INFO:root:Steps: 3200 ; Loss: 4.6053511333465575
+INFO:root:Steps: 3300 ; Loss: 4.605801725387574
+INFO:root:Steps: 3400 ; Loss: 4.605811705589295
+INFO:root:Steps: 3500 ; Loss: 4.605692448616028
+INFO:root:Steps: 3600 ; Loss: 4.605263304710388
+INFO:root:Steps: 3700 ; Loss: 4.605702953338623
+INFO:root:Steps: 3800 ; Loss: 4.605437426567078
+INFO:root:Steps: 3900 ; Loss: 4.604878358840942
+INFO:root:Steps: 4000 ; Loss: 4.605065793991089
+INFO:root:Steps: 4100 ; Loss: 4.605520377159118
+INFO:root:Steps: 4200 ; Loss: 4.605451989173889
+INFO:root:Steps: 4300 ; Loss: 4.605445165634155
+INFO:root:Steps: 4400 ; Loss: 4.6050001955032345
+INFO:root:Steps: 4500 ; Loss: 4.605423192977906
+INFO:root:Steps: 4600 ; Loss: 4.604346718788147
+INFO:root:Steps: 4700 ; Loss: 4.605165281295776
+INFO:root:Steps: 4800 ; Loss: 4.605535926818848
+INFO:root:Steps: 4900 ; Loss: 4.604900674819946
+INFO:root:Steps: 5000 ; Loss: 4.605345950126648
+INFO:root:evaluation accuracy: 1%
+INFO:root:Steps: 5100 ; Loss: 4.605145554542542
+INFO:root:Steps: 5200 ; Loss: 4.605001144409179
+INFO:root:Steps: 5300 ; Loss: 4.6050937414169315
+INFO:root:Steps: 5400 ; Loss: 4.6052010631561275
+INFO:root:Steps: 5500 ; Loss: 4.605178074836731
+INFO:root:Steps: 5600 ; Loss: 4.6056855773925784
+INFO:root:Steps: 5700 ; Loss: 4.605878582000733
+INFO:root:Steps: 5800 ; Loss: 4.6049592351913455
+INFO:root:Steps: 5900 ; Loss: 4.605495800971985
+INFO:root:Steps: 6000 ; Loss: 4.605153965950012
+INFO:root:Steps: 6100 ; Loss: 4.604515271186829
+INFO:root:Steps: 6200 ; Loss: 4.6054675483703615
+INFO:root:Steps: 6300 ; Loss: 4.605161533355713
+INFO:root:Steps: 6400 ; Loss: 4.605371417999268
+INFO:root:Steps: 6500 ; Loss: 4.604540066719055
+INFO:root:Steps: 6600 ; Loss: 4.605162563323975
+INFO:root:Steps: 6700 ; Loss: 4.6050890445709225
+INFO:root:Steps: 6800 ; Loss: 4.605928983688354
+INFO:root:Steps: 6900 ; Loss: 4.6057744884490965
+INFO:root:Steps: 7000 ; Loss: 4.605432896614075
+INFO:root:Steps: 7100 ; Loss: 4.605391879081726
+INFO:root:Steps: 7200 ; Loss: 4.6049276638031005
+INFO:root:Steps: 7300 ; Loss: 4.6055291223526
+INFO:root:Steps: 7400 ; Loss: 4.605658106803894
+INFO:root:Steps: 7500 ; Loss: 4.605349655151367
+INFO:root:Steps: 7600 ; Loss: 4.605139207839966
+INFO:root:Steps: 7700 ; Loss: 4.605029540061951
+INFO:root:Steps: 7800 ; Loss: 4.605031423568725
+INFO:root:Steps: 7900 ; Loss: 4.605087904930115
+INFO:root:Steps: 8000 ; Loss: 4.60559485912323
+INFO:root:Steps: 8100 ; Loss: 4.605114903450012
+INFO:root:Steps: 8200 ; Loss: 4.605324501991272
+INFO:root:Steps: 8300 ; Loss: 4.605172410011291
+INFO:root:Steps: 8400 ; Loss: 4.605339150428772
+INFO:root:Steps: 8500 ; Loss: 4.6052317047119145
+INFO:root:Steps: 8600 ; Loss: 4.605273094177246
+INFO:root:Steps: 8700 ; Loss: 4.605314173698425
+INFO:root:Steps: 8800 ; Loss: 4.605500688552857
+INFO:root:Steps: 8900 ; Loss: 4.6050371122360225
+INFO:root:Steps: 9000 ; Loss: 4.605688009262085
+INFO:root:Steps: 9100 ; Loss: 4.60513738155365
+INFO:root:Steps: 9200 ; Loss: 4.605138058662415
+INFO:root:Steps: 9300 ; Loss: 4.604040369987488
+INFO:root:Steps: 9400 ; Loss: 4.604934415817261
+INFO:root:Steps: 9500 ; Loss: 4.605280566215515
+INFO:root:Steps: 9600 ; Loss: 4.605630593299866
+INFO:root:Steps: 9700 ; Loss: 4.604922189712524
+INFO:root:Steps: 9800 ; Loss: 4.6052322721481325
+INFO:root:Steps: 9900 ; Loss: 4.6052662372589115
+INFO:root:Steps: 10000 ; Loss: 4.605183348655701
+INFO:root:evaluation accuracy: 1%
+INFO:root:Steps: 10100 ; Loss: 4.605660605430603
+INFO:root:Steps: 10200 ; Loss: 4.605621891021729
+INFO:root:Steps: 10300 ; Loss: 4.605286169052124
+INFO:root:Steps: 10400 ; Loss: 4.605333819389343
+INFO:root:Steps: 10500 ; Loss: 4.605426568984985
+INFO:root:Steps: 10600 ; Loss: 4.605410313606262
+INFO:root:Steps: 10700 ; Loss: 4.605237097740173
+INFO:root:Steps: 10800 ; Loss: 4.605243396759033
+INFO:root:Steps: 10900 ; Loss: 4.6054285049438475
+INFO:root:Steps: 11000 ; Loss: 4.605064215660096
+INFO:root:Steps: 11100 ; Loss: 4.60504033088684
+INFO:root:Steps: 11200 ; Loss: 4.60490891456604
+INFO:root:Steps: 11300 ; Loss: 4.604673824310303
+INFO:root:Steps: 11400 ; Loss: 4.605551710128784
+INFO:root:Steps: 11500 ; Loss: 4.605329518318176
+INFO:root:Steps: 11600 ; Loss: 4.605248484611511
+INFO:root:Steps: 11700 ; Loss: 4.60540723323822
+INFO:root:Steps: 11800 ; Loss: 4.605242781639099
+INFO:root:Steps: 11900 ; Loss: 4.605244183540345
+INFO:root:Steps: 12000 ; Loss: 4.605469450950623
+INFO:root:Steps: 12100 ; Loss: 4.60518132686615
+INFO:root:Steps: 12200 ; Loss: 4.605337409973145
+INFO:root:Steps: 12300 ; Loss: 4.604783277511597
+INFO:root:Steps: 12400 ; Loss: 4.604774594306946
+INFO:root:Steps: 12500 ; Loss: 4.605286827087403
+INFO:root:Steps: 12600 ; Loss: 4.605341658592224
+INFO:root:Steps: 12700 ; Loss: 4.605229425430298
+INFO:root:Steps: 12800 ; Loss: 4.604956250190735
+INFO:root:Steps: 12900 ; Loss: 4.605217943191528
+INFO:root:Steps: 13000 ; Loss: 4.605423493385315
+INFO:root:Steps: 13100 ; Loss: 4.605010986328125
+INFO:root:Steps: 13200 ; Loss: 4.605285820960998
+INFO:root:Steps: 13300 ; Loss: 4.605221514701843
+INFO:root:Steps: 13400 ; Loss: 4.605297288894653
+INFO:root:Steps: 13500 ; Loss: 4.6048477935791015
+INFO:root:Steps: 13600 ; Loss: 4.605615978240967
+INFO:root:Steps: 13700 ; Loss: 4.605230560302735
+INFO:root:Steps: 13800 ; Loss: 4.605219264030456
+INFO:root:Steps: 13900 ; Loss: 4.605301423072815
+INFO:root:Steps: 14000 ; Loss: 4.605597076416015
+INFO:root:Steps: 14100 ; Loss: 4.605231261253357
+INFO:root:Steps: 14200 ; Loss: 4.605285425186157
+INFO:root:Steps: 14300 ; Loss: 4.604763474464416
+INFO:root:Steps: 14400 ; Loss: 4.605495977401733
+INFO:root:Steps: 14500 ; Loss: 4.605502333641052
+INFO:root:Steps: 14600 ; Loss: 4.605409550666809
+INFO:root:Steps: 14700 ; Loss: 4.6050132513046265
+INFO:root:Steps: 14800 ; Loss: 4.605327844619751
+INFO:root:Steps: 14900 ; Loss: 4.605315814018249
+INFO:root:Steps: 15000 ; Loss: 4.6050269985198975
+INFO:root:evaluation accuracy: 1%
+INFO:root:Steps: 15100 ; Loss: 4.605274939537049
+INFO:root:Steps: 15200 ; Loss: 4.6047439908981325
+INFO:root:Steps: 15300 ; Loss: 4.60497817993164
+INFO:root:Steps: 15400 ; Loss: 4.605335388183594
+INFO:root:Steps: 15500 ; Loss: 4.605241203308106
+INFO:root:Steps: 15600 ; Loss: 4.605244331359863
+INFO:root:Steps: 15700 ; Loss: 4.605625238418579
+INFO:root:Steps: 15800 ; Loss: 4.604908165931701
+INFO:root:Steps: 15900 ; Loss: 4.604853653907776
+INFO:root:Steps: 16000 ; Loss: 4.604981985092163
+INFO:root:Steps: 16100 ; Loss: 4.605069212913513
+INFO:root:Steps: 16200 ; Loss: 4.605475454330445
+INFO:root:Steps: 16300 ; Loss: 4.604739723205566
+INFO:root:Steps: 16400 ; Loss: 4.605402908325195
+INFO:root:Steps: 16500 ; Loss: 4.605356135368347
+INFO:root:Steps: 16600 ; Loss: 4.604690518379211
+INFO:root:Steps: 16700 ; Loss: 4.604943704605103
+INFO:root:Steps: 16800 ; Loss: 4.605022158622742
+INFO:root:Steps: 16900 ; Loss: 4.6050812530517575
+INFO:root:Steps: 17000 ; Loss: 4.605289044380188
+INFO:root:Steps: 17100 ; Loss: 4.605507249832153
+INFO:root:Steps: 17200 ; Loss: 4.605253953933715
+INFO:root:Steps: 17300 ; Loss: 4.6054448223114015
+INFO:root:Steps: 17400 ; Loss: 4.605460252761841
+INFO:root:Steps: 17500 ; Loss: 4.604933776855469
+INFO:root:Steps: 17600 ; Loss: 4.605641627311707
+INFO:root:Steps: 17700 ; Loss: 4.60574360370636
+INFO:root:Steps: 17800 ; Loss: 4.605816721916199
+INFO:root:Steps: 17900 ; Loss: 4.60516312122345
+INFO:root:Steps: 18000 ; Loss: 4.604960064888001
+INFO:root:Steps: 18100 ; Loss: 4.604994006156922
+INFO:root:Steps: 18200 ; Loss: 4.6048790550231935
+INFO:root:Steps: 18300 ; Loss: 4.60509762763977
+INFO:root:Steps: 18400 ; Loss: 4.604834461212159
+INFO:root:Steps: 18500 ; Loss: 4.6053403902053835
+INFO:root:Steps: 18600 ; Loss: 4.605406103134155
+INFO:root:Steps: 18700 ; Loss: 4.605071082115173
+INFO:root:Steps: 18800 ; Loss: 4.604940981864929
+INFO:root:Steps: 18900 ; Loss: 4.6049376440048215
+INFO:root:Steps: 19000 ; Loss: 4.605266366004944
+INFO:root:Steps: 19100 ; Loss: 4.605326051712036
+INFO:root:Steps: 19200 ; Loss: 4.605216331481934
+INFO:root:Steps: 19300 ; Loss: 4.605218830108643
+INFO:root:Steps: 19400 ; Loss: 4.605322222709656
+INFO:root:Steps: 19500 ; Loss: 4.6049988651275635
+INFO:root:Steps: 19600 ; Loss: 4.605579900741577
+INFO:root:Steps: 19700 ; Loss: 4.605218253135681
+INFO:root:Steps: 19800 ; Loss: 4.6052707052230835
+INFO:root:Steps: 19900 ; Loss: 4.605747890472412
+INFO:root:Steps: 20000 ; Loss: 4.605287957191467
+INFO:root:evaluation accuracy: 1%
+INFO:root:Steps: 20100 ; Loss: 4.60484486579895
+INFO:root:Steps: 20200 ; Loss: 4.605139675140381
+INFO:root:Steps: 20300 ; Loss: 4.605525884628296
+INFO:root:Steps: 20400 ; Loss: 4.605321354866028
+INFO:root:Steps: 20500 ; Loss: 4.605831084251403
+INFO:root:Steps: 20600 ; Loss: 4.605159606933594
+INFO:root:Steps: 20700 ; Loss: 4.6054319620132445
+INFO:root:Steps: 20800 ; Loss: 4.60480477809906
+INFO:root:Steps: 20900 ; Loss: 4.6053616809844975
+INFO:root:Steps: 21000 ; Loss: 4.604632411003113
+INFO:root:Steps: 21100 ; Loss: 4.605806713104248
+INFO:root:Steps: 21200 ; Loss: 4.60534634590149
+INFO:root:Steps: 21300 ; Loss: 4.605106282234192
+INFO:root:Steps: 21400 ; Loss: 4.604963598251342
+INFO:root:Steps: 21500 ; Loss: 4.604992632865906
+INFO:root:Steps: 21600 ; Loss: 4.605205817222595
+INFO:root:Steps: 21700 ; Loss: 4.605621600151062
+INFO:root:Steps: 21800 ; Loss: 4.6048664331436155
+INFO:root:Steps: 21900 ; Loss: 4.604862465858459
+INFO:root:Steps: 22000 ; Loss: 4.60512237071991
+INFO:root:Steps: 22100 ; Loss: 4.605188770294189
+INFO:root:Steps: 22200 ; Loss: 4.604646902084351
+INFO:root:Steps: 22300 ; Loss: 4.605598788261414
+INFO:root:Steps: 22400 ; Loss: 4.605284056663513
+INFO:root:Steps: 22500 ; Loss: 4.60543438911438
+INFO:root:Steps: 22600 ; Loss: 4.6053157854080204
+INFO:root:Steps: 22700 ; Loss: 4.605488648414612
+INFO:root:Steps: 22800 ; Loss: 4.605154361724853
+INFO:root:Steps: 22900 ; Loss: 4.605107231140137
+INFO:root:Steps: 23000 ; Loss: 4.605216865539551
+INFO:root:Steps: 23100 ; Loss: 4.60452437877655
+INFO:root:Steps: 23200 ; Loss: 4.604793801307678
+INFO:root:Steps: 23300 ; Loss: 4.605313982963562
+INFO:root:Steps: 23400 ; Loss: 4.605202746391297
+INFO:root:Steps: 23500 ; Loss: 4.605557765960693
+INFO:root:Steps: 23600 ; Loss: 4.605494871139526
+INFO:root:Steps: 23700 ; Loss: 4.605249357223511
+INFO:root:Steps: 23800 ; Loss: 4.604476661682129
+INFO:root:Steps: 23900 ; Loss: 4.605173788070679
+INFO:root:Steps: 24000 ; Loss: 4.605437541007996
+INFO:root:Steps: 24100 ; Loss: 4.604793395996094
+INFO:root:Steps: 24200 ; Loss: 4.6049607515335085
+INFO:root:Steps: 24300 ; Loss: 4.605543656349182
+INFO:root:Steps: 24400 ; Loss: 4.604713611602783
+INFO:root:Steps: 24500 ; Loss: 4.605295133590698
+INFO:root:Steps: 24600 ; Loss: 4.605047287940979
+INFO:root:Steps: 24700 ; Loss: 4.605043554306031
+INFO:root:Steps: 24800 ; Loss: 4.604708037376404
+INFO:root:Steps: 24900 ; Loss: 4.605312910079956
+INFO:root:Steps: 25000 ; Loss: 4.60543701171875
+INFO:root:evaluation accuracy: 1%
+INFO:root:Steps: 25100 ; Loss: 4.605325384140015
+INFO:root:Steps: 25200 ; Loss: 4.6049691104888915
+Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x0000018D56CCDDC8>
+Traceback (most recent call last):
+  File "D:\Applications\Anaconda\envs\minerl\lib\site-packages\torch\utils\data\dataloader.py", line 1101, in __del__
+    self._shutdown_workers()
+  File "D:\Applications\Anaconda\envs\minerl\lib\site-packages\torch\utils\data\dataloader.py", line 1075, in _shutdown_workers
+    w.join(timeout=_utils.MP_STATUS_CHECK_INTERVAL)
+  File "D:\Applications\Anaconda\envs\minerl\lib\multiprocessing\process.py", line 140, in join
+    res = self._popen.wait(timeout)
+  File "D:\Applications\Anaconda\envs\minerl\lib\multiprocessing\popen_spawn_win32.py", line 104, in wait
+    res = _winapi.WaitForSingleObject(int(self._handle), msecs)
+KeyboardInterrupt: 
+Traceback (most recent call last):
+  File ".\main.py", line 104, in <module>
+    train(data_dir='../data')
+  File ".\main.py", line 60, in train
+    outputs = model(inputs)
+  File "D:\Applications\Anaconda\envs\minerl\lib\site-packages\torch\nn\modules\module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "D:\IIT\Coursework\CS6886\network.py", line 62, in forward
+    x = self.fuse_blocks(x)
+  File "D:\Applications\Anaconda\envs\minerl\lib\site-packages\torch\nn\modules\module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "D:\Applications\Anaconda\envs\minerl\lib\site-packages\torch\nn\modules\container.py", line 117, in forward
+    input = module(input)
+  File "D:\Applications\Anaconda\envs\minerl\lib\site-packages\torch\nn\modules\module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "D:\IIT\Coursework\CS6886\network.py", line 105, in forward
+    out = self.hsigmoid(self.se_layer(out))
+  File "D:\Applications\Anaconda\envs\minerl\lib\site-packages\torch\nn\modules\module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "D:\IIT\Coursework\CS6886\network.py", line 150, in forward
+    y = self.fc(y).view(b, c, 1, 1)
+  File "D:\Applications\Anaconda\envs\minerl\lib\site-packages\torch\nn\modules\module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "D:\Applications\Anaconda\envs\minerl\lib\site-packages\torch\nn\modules\container.py", line 117, in forward
+    input = module(input)
+KeyboardInterrupt

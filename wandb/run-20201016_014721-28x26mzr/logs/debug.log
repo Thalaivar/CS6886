@@ -1,0 +1,125 @@
+2020-10-16 01:47:21,562 INFO    MainThread:6792 [wandb_init.py:_log_setup():292] Logging user logs to wandb\run-20201016_014721-28x26mzr\logs\debug.log
+2020-10-16 01:47:21,563 INFO    MainThread:6792 [wandb_init.py:_log_setup():293] Logging internal logs to wandb\run-20201016_014721-28x26mzr\logs\debug-internal.log
+2020-10-16 01:47:21,563 INFO    MainThread:6792 [wandb_setup.py:_flush():68] setting env: {}
+2020-10-16 01:47:21,563 INFO    MainThread:6792 [wandb_setup.py:_flush():68] setting user settings: {}
+2020-10-16 01:47:21,563 INFO    MainThread:6792 [wandb_setup.py:_flush():68] multiprocessing start_methods=spawn
+2020-10-16 01:47:25,353 INFO    MainThread:6792 [wandb_run.py:_console_start():1265] atexit reg
+2020-10-16 01:47:25,356 INFO    MainThread:6792 [wandb_run.py:_redirect():1135] redirect: SettingsConsole.WRAP
+2020-10-16 01:47:25,356 INFO    MainThread:6792 [wandb_run.py:_redirect():1166] Wrapping output streams.
+2020-10-16 01:47:25,356 INFO    MainThread:6792 [wandb_run.py:_redirect():1182] Redirects installed.
+2020-10-16 01:47:26,882 INFO    MainThread:6792 [wandb_watch.py:watch():32] Watching
+2020-10-16 01:47:26,889 INFO    MainThread:6792 [wandb_config.py:__setitem__():62] config set batch_size = 16 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x0000015D0A478E88>>
+2020-10-16 01:47:26,889 INFO    MainThread:6792 [wandb_run.py:_config_callback():581] config_cb batch_size 16 {'_wandb': {'cli_version': '0.10.5', 'python_version': '3.7.7', 'is_jupyter_run': False, 'is_kaggle_kernel': False, 'framework': 'torch'}, 'batch_size': 16}
+2020-10-16 01:47:26,891 INFO    MainThread:6792 [wandb_config.py:__setitem__():62] config set loss_fn = CE-Loss - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x0000015D0A478E88>>
+2020-10-16 01:47:26,891 INFO    MainThread:6792 [wandb_run.py:_config_callback():581] config_cb loss_fn CE-Loss {'_wandb': {'cli_version': '0.10.5', 'python_version': '3.7.7', 'is_jupyter_run': False, 'is_kaggle_kernel': False, 'framework': 'torch'}, 'batch_size': 16, 'loss_fn': 'CE-Loss'}
+2020-10-16 01:47:26,893 INFO    MainThread:6792 [wandb_config.py:__setitem__():62] config set optimizer = Adams - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x0000015D0A478E88>>
+2020-10-16 01:47:26,893 INFO    MainThread:6792 [wandb_run.py:_config_callback():581] config_cb optimizer Adams {'_wandb': {'cli_version': '0.10.5', 'python_version': '3.7.7', 'is_jupyter_run': False, 'is_kaggle_kernel': False, 'framework': 'torch'}, 'batch_size': 16, 'loss_fn': 'CE-Loss', 'optimizer': 'Adams'}
+2020-10-16 01:47:26,896 INFO    MainThread:6792 [wandb_config.py:__setitem__():62] config set lr = 1e-06 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x0000015D0A478E88>>
+2020-10-16 01:47:26,896 INFO    MainThread:6792 [wandb_run.py:_config_callback():581] config_cb lr 1e-06 {'_wandb': {'cli_version': '0.10.5', 'python_version': '3.7.7', 'is_jupyter_run': False, 'is_kaggle_kernel': False, 'framework': 'torch'}, 'batch_size': 16, 'loss_fn': 'CE-Loss', 'optimizer': 'Adams', 'lr': 1e-06}
+2020-10-16 02:04:12,059 INFO    MainThread:6792 [wandb_run.py:_atexit_cleanup():1238] got exitcode: 255
+2020-10-16 02:04:12,060 INFO    MainThread:6792 [wandb_run.py:_restore():1210] restore
+2020-10-16 02:04:12,140 INFO    MainThread:6792 [wandb_run.py:_wait_for_finish():1349] got exit ret: uuid: "749ce4086217478283ae671d4eb3d17b"
+response {
+  poll_exit_response {
+    file_counts {
+      wandb_count: 1
+      media_count: 1
+    }
+    pusher_stats {
+      uploaded_bytes: 21919
+      total_bytes: 21919
+    }
+  }
+}
+
+2020-10-16 02:04:20,052 INFO    MainThread:6792 [wandb_run.py:_wait_for_finish():1349] got exit ret: uuid: "68a3bfa2e08142f89ed242bc82c74106"
+response {
+  poll_exit_response {
+    file_counts {
+      wandb_count: 5
+      media_count: 1
+    }
+    pusher_stats {
+      uploaded_bytes: 646744
+      total_bytes: 1520342
+    }
+  }
+}
+
+2020-10-16 02:04:22,058 INFO    MainThread:6792 [wandb_run.py:_wait_for_finish():1349] got exit ret: uuid: "8ea2437d693c491aaa15e8a38589b687"
+response {
+  poll_exit_response {
+    file_counts {
+      wandb_count: 5
+      media_count: 1
+    }
+    pusher_stats {
+      uploaded_bytes: 933464
+      total_bytes: 1520342
+    }
+  }
+}
+
+2020-10-16 02:04:24,062 INFO    MainThread:6792 [wandb_run.py:_wait_for_finish():1349] got exit ret: uuid: "83e14d086c42478ab54e45ca86432044"
+response {
+  poll_exit_response {
+    file_counts {
+      wandb_count: 5
+      media_count: 1
+    }
+    pusher_stats {
+      uploaded_bytes: 1132298
+      total_bytes: 1520342
+    }
+  }
+}
+
+2020-10-16 02:04:26,066 INFO    MainThread:6792 [wandb_run.py:_wait_for_finish():1349] got exit ret: uuid: "feb86c52255540e7ab1c095106c7a2ee"
+response {
+  poll_exit_response {
+    file_counts {
+      wandb_count: 5
+      media_count: 1
+    }
+    pusher_stats {
+      uploaded_bytes: 1451786
+      total_bytes: 1520342
+    }
+  }
+}
+
+2020-10-16 02:04:28,071 INFO    MainThread:6792 [wandb_run.py:_wait_for_finish():1349] got exit ret: uuid: "c1053e5a6ce64b5bae9b87878c1e6172"
+response {
+  poll_exit_response {
+    file_counts {
+      wandb_count: 5
+      media_count: 1
+    }
+    pusher_stats {
+      uploaded_bytes: 1520342
+      total_bytes: 1520342
+    }
+  }
+}
+
+2020-10-16 02:04:30,075 INFO    MainThread:6792 [wandb_run.py:_wait_for_finish():1349] got exit ret: uuid: "014ad9fa98334919a4e0de7eb4375c13"
+response {
+  poll_exit_response {
+    done: true
+    exit_result {
+    }
+    file_counts {
+      wandb_count: 5
+      media_count: 1
+    }
+    pusher_stats {
+      uploaded_bytes: 1520342
+      total_bytes: 1520342
+    }
+  }
+}
+
+2020-10-16 02:04:31,303 INFO    MainThread:6792 [wandb_run.py:_show_summary():1477] rendering summary
+2020-10-16 02:04:31,317 INFO    MainThread:6792 [wandb_run.py:_show_history():1515] rendering history
+2020-10-16 02:04:31,331 INFO    MainThread:6792 [wandb_run.py:_show_files():1543] logging synced files
+2020-10-16 02:04:31,347 INFO    MainThread:6792 [internal.py:handle_exit():137] Internal process exited

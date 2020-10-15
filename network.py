@@ -58,7 +58,6 @@ class Network(nn.Module):
         )
 
     def forward(self, x):
-        x = x.permute(0, 3, 1, 2).contiguous()      # check if axis permutation is required
         x = self.input_conv(x)
         x = self.fuse_blocks(x)
         x = self.conv1(x)

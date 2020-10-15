@@ -1,0 +1,20 @@
+2020-10-16 00:35:40,832 INFO    MainThread:18564 [wandb_init.py:_log_setup():292] Logging user logs to wandb\run-20201016_003540-3jgmdnl2\logs\debug.log
+2020-10-16 00:35:40,832 INFO    MainThread:18564 [wandb_init.py:_log_setup():293] Logging internal logs to wandb\run-20201016_003540-3jgmdnl2\logs\debug-internal.log
+2020-10-16 00:35:40,832 INFO    MainThread:18564 [wandb_setup.py:_flush():68] setting env: {}
+2020-10-16 00:35:40,832 INFO    MainThread:18564 [wandb_setup.py:_flush():68] setting user settings: {}
+2020-10-16 00:35:40,832 INFO    MainThread:18564 [wandb_setup.py:_flush():68] multiprocessing start_methods=spawn
+2020-10-16 00:35:45,145 INFO    MainThread:18564 [wandb_run.py:_console_start():1265] atexit reg
+2020-10-16 00:35:45,149 INFO    MainThread:18564 [wandb_run.py:_redirect():1135] redirect: SettingsConsole.WRAP
+2020-10-16 00:35:45,149 INFO    MainThread:18564 [wandb_run.py:_redirect():1166] Wrapping output streams.
+2020-10-16 00:35:45,149 INFO    MainThread:18564 [wandb_run.py:_redirect():1182] Redirects installed.
+2020-10-16 00:35:48,059 INFO    MainThread:18564 [wandb_watch.py:watch():32] Watching
+2020-10-16 00:35:48,066 INFO    MainThread:18564 [wandb_config.py:__setitem__():62] config set batch_size = 64 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x0000018D5EB9B288>>
+2020-10-16 00:35:48,066 INFO    MainThread:18564 [wandb_run.py:_config_callback():581] config_cb batch_size 64 {'_wandb': {'cli_version': '0.10.5', 'python_version': '3.7.7', 'is_jupyter_run': False, 'is_kaggle_kernel': False, 'framework': 'torch'}, 'batch_size': 64}
+2020-10-16 00:35:48,068 INFO    MainThread:18564 [wandb_config.py:__setitem__():62] config set loss_fn = CE-Loss - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x0000018D5EB9B288>>
+2020-10-16 00:35:48,068 INFO    MainThread:18564 [wandb_run.py:_config_callback():581] config_cb loss_fn CE-Loss {'_wandb': {'cli_version': '0.10.5', 'python_version': '3.7.7', 'is_jupyter_run': False, 'is_kaggle_kernel': False, 'framework': 'torch'}, 'batch_size': 64, 'loss_fn': 'CE-Loss'}
+2020-10-16 00:35:48,070 INFO    MainThread:18564 [wandb_config.py:__setitem__():62] config set optimizer = Adams - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x0000018D5EB9B288>>
+2020-10-16 00:35:48,070 INFO    MainThread:18564 [wandb_run.py:_config_callback():581] config_cb optimizer Adams {'_wandb': {'cli_version': '0.10.5', 'python_version': '3.7.7', 'is_jupyter_run': False, 'is_kaggle_kernel': False, 'framework': 'torch'}, 'batch_size': 64, 'loss_fn': 'CE-Loss', 'optimizer': 'Adams'}
+2020-10-16 00:35:48,073 INFO    MainThread:18564 [wandb_config.py:__setitem__():62] config set lr = 0.0001 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x0000018D5EB9B288>>
+2020-10-16 00:35:48,074 INFO    MainThread:18564 [wandb_run.py:_config_callback():581] config_cb lr 0.0001 {'_wandb': {'cli_version': '0.10.5', 'python_version': '3.7.7', 'is_jupyter_run': False, 'is_kaggle_kernel': False, 'framework': 'torch'}, 'batch_size': 64, 'loss_fn': 'CE-Loss', 'optimizer': 'Adams', 'lr': 0.0001}
+2020-10-16 00:58:16,870 INFO    MainThread:18564 [wandb_run.py:_atexit_cleanup():1238] got exitcode: 255
+2020-10-16 00:58:16,870 INFO    MainThread:18564 [wandb_run.py:_restore():1210] restore

@@ -1,3 +1,4 @@
+from tqdm import tqdm
 from network import *
 from torchvision import transforms
 from torchvision import datasets
@@ -33,7 +34,7 @@ def train(data_dir: str):
     wandb.watch(model)
 
     # set these parameters
-    batch_size = 64
+    batch_size = 32
     lr = 1e-4
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=lr)
@@ -47,9 +48,11 @@ def train(data_dir: str):
     train_data = datasets.CIFAR100(root=data_dir, train=True, transform=transform_train, download=True)
     train_dataloader = DataLoader(train_data, batch_size, shuffle=True, num_workers=4)
     test_data = datasets.CIFAR100(root=data_dir, train=False, transform=transform_test, download=True)
-    test_dataloader = DataLoader(test_data, batch_size, shuffle=True, num_workers=4)
+    test_dataloader = DataLoader(test_data, batch_size, shuffle=True, num_workers=0)
 
-    logging.info(f'Beginning training for {n_epochs} epochs ({n_epochs*len(train_dataloader)*batch_size} steps) on device: {device}')
+    logging.info(f'Beginning training for {n_epochs} epochs ({n_epochs*len(train_dataloader)} steps) on device: {device}')
+    
+    pbar = tqdm(total=n_epochs*len(train_dataloader))
     steps = 0
     running_loss = 0.0
     for _ in range(n_epochs):
@@ -67,10 +70,11 @@ def train(data_dir: str):
             running_loss += loss.item()
 
             steps += 1
+            pbar.update(1)
 
             if steps % update_freq == 0:
                 wandb.log({'loss': running_loss/update_freq}, step=steps)
-                logging.info(f'Steps: {steps} ; Loss: {running_loss/update_freq}')
+                # logging.info(f'Steps: {steps} ; Loss: {running_loss/update_freq}')
                 running_loss = 0.0
 
             if steps % eval_freq == 0:
@@ -96,5 +100,9 @@ def evaluate_model(model, dataloader):
             correct += (predicted == labels.cpu()).sum().item()
 
     logging.info(f'evaluation accuracy: {round(100 * correct // total, 2)}%')    
-            
+    model.train()
     return correct / total
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
+    train(data_dir='../data')

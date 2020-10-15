@@ -1,0 +1,5 @@
+Files already downloaded and verified
+Files already downloaded and verified
+INFO:root:Beginning training for 1000 epochs (3125000 steps) on device: cuda:0
+  0%|                                                                                                                                    | 0/3125000 [00:00<?, ?it/s]c:\Users\Dhruv Laad\.vscode\extensions\ms-python.python-2020.9.114305\pythonFiles\lib\python\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_resolver.py:193: UserWarning: The .grad attribute of a Tensor that is not a leaf Tensor is being accessed. Its .grad attribute won't be populated during autograd.backward(). If you indeed want the gradient for a non-leaf Tensor, use .retain_grad() on the non-leaf Tensor. If you access the non-leaf Tensor by mistake, make sure you access the leaf Tensor instead. See github.com/pytorch/pytorch/pull/30531 for more informations.
+  attr = getattr(var, name)
