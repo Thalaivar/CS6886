@@ -83,6 +83,7 @@ class FuseBlock(nn.Module):
         self.squeeze_and_excite = squeeze_and_excite
         if squeeze_and_excite:
             self.se_layer = SEModule(channel=2 * exp)
+            self.hsigmoid = Hsigmoid(inplace=False)
 
         self.conv_bn1 = nn.BatchNorm2d(num_features=exp)
         self.conv_bn2 = nn.BatchNorm2d(num_features= out_channels)
@@ -90,6 +91,8 @@ class FuseBlock(nn.Module):
         self.dw_conv_bn2 = nn.BatchNorm2d(num_features=exp)
 
         self.nonlinearity = nonlinearity
+
+        self._initialize_weights()
 
     def forward(self, x):
         out1 = self.conv_bn1(self.nonlinearity(self.conv1(x)))
@@ -100,12 +103,27 @@ class FuseBlock(nn.Module):
         out = torch.cat([out2, out3], 1)
 
         if self.squeeze_and_excite:
-            out = self.se_layer(out)
+            out = self.hsigmoid(self.se_layer(out))
         out = self.nonlinearity(out)
 
         out = self.conv_bn2(self.conv2(out))
 
         return out
+
+    def _initialize_weights(self):                                                                               
+        # weight initialization                                                                                                  
+        for m in self.modules():                                                                                                 
+            if isinstance(m, nn.Conv2d):                                                                                         
+                nn.init.kaiming_normal_(m.weight, mode='fan_out')                                                                
+                if m.bias is not None:                                                                                           
+                    nn.init.zeros_(m.bias)                                                                                       
+            elif isinstance(m, nn.BatchNorm2d):                                                                                  
+                nn.init.ones_(m.weight)                                                                                          
+                nn.init.zeros_(m.bias)                                                                                           
+            elif isinstance(m, nn.Linear):                                                                                       
+                nn.init.normal_(m.weight, 0, 0.01)                                                                               
+                if m.bias is not None:                                                                                           
+                    nn.init.zeros_(m.bias)         
 
 class Hsigmoid(nn.Module):                                                                                                                                                                  
     def __init__(self, inplace=True):                                                                                                                                                       
