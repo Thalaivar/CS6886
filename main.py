@@ -93,7 +93,7 @@ def evaluate_model(model, dataloader):
             _, predicted = torch.max(outputs.data, 1)
 
             total += labels.shape[0]
-            correct += (predicted == labels).sum().item()
+            correct += (predicted == labels.cpu()).sum().item()
 
     logging.info(f'evaluation accuracy: {round(100 * correct // total, 2)}%')    
             
