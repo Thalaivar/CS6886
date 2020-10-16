@@ -5,12 +5,12 @@ import torch.nn.functional as F
 
 class Network(nn.Module):
     def __init__(self, in_channels):
-        super().__init__()
+        super(Network, self).__init__()
         
         self.input_conv = nn.Sequential(
-                            nn.Conv2d(in_channels=in_channels, out_channels=16, kernel_size=3, stride=2, padding=1),
-                            Hswish(),
-                            nn.BatchNorm2d(num_features=16)
+                            nn.Conv2d(in_channels=in_channels, out_channels=16, kernel_size=3, stride=2, padding=1, bias=False),
+                            nn.BatchNorm2d(num_features=16),
+                            Hswish()
                         )
         in_channels = 16
 
@@ -20,7 +20,7 @@ class Network(nn.Module):
         stride = [2, 2, 1, 2, 1, 1, 1, 1, 2, 1, 1]
 
         is_SE = [True for _ in exp]
-        is_SE[1] =is_SE[2] = False
+        is_SE[1] = is_SE[2] = False
 
         nonlinearity = [Hswish() for _ in exp]
         nonlinearity[0] = nonlinearity[1] = nonlinearity[2] = nn.ReLU()
@@ -39,7 +39,8 @@ class Network(nn.Module):
         self.fuse_blocks = nn.Sequential(*fuse_blocks)
 
         self.conv1 = nn.Sequential(
-                        nn.Conv2d(in_channels=in_channels, out_channels=576, stride=1, kernel_size=1),
+                        nn.Conv2d(in_channels=in_channels, out_channels=576, stride=1, kernel_size=1, bias=False),
+                        nn.BatchNorm2d(num_features=576),
                         SEModule(channel=576),
                         Hswish()
                     )
@@ -48,14 +49,12 @@ class Network(nn.Module):
         self.avg_pool = nn.AdaptiveAvgPool2d(1)
 
         self.conv2 = nn.Sequential(
-                        nn.Conv2d(in_channels=in_channels, out_channels=1024, stride=1, kernel_size=1),
+                        nn.Dropout(p=0.2),
+                        nn.Conv2d(in_channels=in_channels, out_channels=1024, stride=1, kernel_size=1, bias=False),
                         Hswish()
                     )
         
-        self.output = nn.Sequential(
-                        nn.Dropout(p=0.2),
-                        nn.Linear(in_features=1024, out_features=100, bias=False)
-        )
+        self.output = nn.Linear(in_features=1024, out_features=100, bias=False)
 
     def forward(self, x):
         x = self.input_conv(x)
@@ -65,12 +64,26 @@ class Network(nn.Module):
         x = self.conv2(x)
         x = self.output(x.squeeze())
         return x
-        
+    
+    def _initialize_weights(self):                                                                               
+        # weight initialization                                                                                                  
+        for m in self.modules():                                                                                                 
+            if isinstance(m, nn.Conv2d):                                                                                         
+                nn.init.kaiming_normal_(m.weight, mode='fan_out')                                                                
+                if m.bias is not None:                                                                                           
+                    nn.init.zeros_(m.bias)                                                                                       
+            elif isinstance(m, nn.BatchNorm2d):                                                                                  
+                nn.init.ones_(m.weight)                                                                                          
+                nn.init.zeros_(m.bias)                                                                                           
+            elif isinstance(m, nn.Linear):                                                                                       
+                nn.init.normal_(m.weight, 0, 0.01)                                                                               
+                if m.bias is not None:                                                                                           
+                    nn.init.zeros_(m.bias)   
 
 
 class FuseBlock(nn.Module):
     def __init__(self, K, exp, stride, in_channels, out_channels, nonlinearity, squeeze_and_excite=False):
-        super().__init__()
+        super(FuseBlock, self).__init__()
 
         self.conv1 = nn.Conv2d(in_channels, exp, kernel_size=1, stride=1, padding=0, bias=False)
         self.conv2 = nn.Conv2d(2 * exp, out_channels, kernel_size=1, stride=1, padding=0, bias=False)
@@ -91,8 +104,6 @@ class FuseBlock(nn.Module):
 
         self.nonlinearity = nonlinearity
 
-        self._initialize_weights()
-
     def forward(self, x):
         out1 = self.conv_bn1(self.nonlinearity(self.conv1(x)))
         
@@ -105,24 +116,9 @@ class FuseBlock(nn.Module):
             out = self.hsigmoid(self.se_layer(out))
         out = self.nonlinearity(out)
 
-        out = self.conv_bn2(self.conv2(out))
+        out = self.conv_bn2(self.conv2(out))    
 
-        return out
-
-    def _initialize_weights(self):                                                                               
-        # weight initialization                                                                                                  
-        for m in self.modules():                                                                                                 
-            if isinstance(m, nn.Conv2d):                                                                                         
-                nn.init.kaiming_normal_(m.weight, mode='fan_out')                                                                
-                if m.bias is not None:                                                                                           
-                    nn.init.zeros_(m.bias)                                                                                       
-            elif isinstance(m, nn.BatchNorm2d):                                                                                  
-                nn.init.ones_(m.weight)                                                                                          
-                nn.init.zeros_(m.bias)                                                                                           
-            elif isinstance(m, nn.Linear):                                                                                       
-                nn.init.normal_(m.weight, 0, 0.01)                                                                               
-                if m.bias is not None:                                                                                           
-                    nn.init.zeros_(m.bias)         
+        return out      
 
 class Hsigmoid(nn.Module):                                                                                                                                                                  
     def __init__(self, inplace=True):                                                                                                                                                       

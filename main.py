@@ -24,8 +24,7 @@ transform_test = transforms.Compose([
 
 def train(data_dir: str):
     update_freq = 100
-    eval_freq = 5000
-    wandb.init(project='mini-assignment-3')
+    wandb.init(project='mini-assignment-3', dir='../')
 
     model = Network(in_channels=3)
     model.to(device)
@@ -34,15 +33,16 @@ def train(data_dir: str):
     wandb.watch(model)
 
     # set these parameters
-    batch_size = 32
-    lr = 1e-4
+    batch_size = 64
+    lr = 1e-1
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=lr)
+    optimizer = optim.SGD(model.parameters(), lr=lr, momentum=0.9)
+    scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.5)
     n_epochs = 1000
 
     wandb.config.batch_size = batch_size
-    wandb.config.loss_fn = 'CE-Loss'
-    wandb.config.optimizer = 'Adams'
+    wandb.config.loss_fn = type(criterion).__name__
+    wandb.config.optimizer = type(optimizer).__name__
     wandb.config.lr = lr
 
     train_data = datasets.CIFAR100(root=data_dir, train=True, transform=transform_train, download=True)
@@ -52,35 +52,32 @@ def train(data_dir: str):
 
     logging.info(f'Beginning training for {n_epochs} epochs ({n_epochs*len(train_dataloader)} steps) on device: {device}')
     
-    pbar = tqdm(total=n_epochs*len(train_dataloader))
     steps = 0
     running_loss = 0.0
-    for _ in range(n_epochs):
+    for epoch in range(n_epochs):
         for i, data in enumerate(train_dataloader, 0):
             inputs, labels = data
             inputs, labels = inputs.to(device), labels.to(device)
 
+            optimizer.zero_grad()
             outputs = model(inputs)
             loss = criterion(outputs, labels)
             loss.backward()
-
-            optimizer.zero_grad()
             optimizer.step()
 
             running_loss += loss.item()
-
             steps += 1
-            pbar.update(1)
 
             if steps % update_freq == 0:
                 wandb.log({'loss': running_loss/update_freq}, step=steps)
                 # logging.info(f'Steps: {steps} ; Loss: {running_loss/update_freq}')
                 running_loss = 0.0
 
-            if steps % eval_freq == 0:
-                eval_acc = evaluate_model(model, test_dataloader)
-                wandb.log({'eval accuracy': eval_acc}, step=steps)
-        
+        scheduler.step()
+        eval_acc = evaluate_model(model, test_dataloader)
+        wandb.log({'eval accuracy': eval_acc}, step=steps)
+        logging.info(f'epoch: {epoch} ; evaluation accuracy: {round(100 * eval_acc, 2)}%')    
+
     torch.save(model.parameters(), './final_model.wts')
     wandb.save("final_model.h5")
 
@@ -99,10 +96,9 @@ def evaluate_model(model, dataloader):
             total += labels.shape[0]
             correct += (predicted == labels.cpu()).sum().item()
 
-    logging.info(f'evaluation accuracy: {round(100 * correct // total, 2)}%')    
     model.train()
     return correct / total
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    train(data_dir='../data')
+    train(data_dir='D:/IIT/Coursework/data')
