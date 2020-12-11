@@ -5,8 +5,10 @@ import onnx
 import onnxruntime
 import numpy as np
 
+MODEL_DIR = '../../data/A5/models/'
+IMG_PATH = 'ostrich.jpg'
 
-def input_format_for_resnet_50(img_path):
+def format_input_for_resnet_50(img_path):
     img = cv2.imread(img_path).astype(np.float32)
     # convert BGR to RGB format
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -29,14 +31,14 @@ def input_format_for_resnet_50(img_path):
     
     return img
 
-def get_inference_time(batch=False):
-    N = 30
-    model_dir = '../../data/A5/models/'
-    model_name = 'resnet50_v1.onnx'
-    img_file = 'ostrich.jpg'
+def format_input_for_mobilenet_v1(img_path):
+    return format_input_for_resnet_50(img_path)
 
-    model = model_dir + model_name
-    img_path = model_dir + img_file
+def get_inference_time(model_name, batch=False):
+    N = 30
+
+    model = MODEL_DIR + model_name
+    img_path = MODEL_DIR + IMG_PATH
 
     session = onnxruntime.InferenceSession(model)
     input_name = session.get_inputs()[0].name
@@ -57,5 +59,11 @@ def get_inference_time(batch=False):
     return t_elapsed/N
 
 if __name__ == "__main__":
-    t = get_inference_time()
-    print(f'Inference time for 30 runs: {round(t*1000), 2} ms')
+    print('Inference time for 30 runs:')
+
+    print('     Image Classification:')
+    resnet_50_t = get_inference_time(model_name='resnet_50_v1.onnx')
+    print(f'        ResNet50 (v1.5): {round(resnet_50_t*1000), 2} ms')
+
+    mobilenet_v1_t = get_inference_time(model_name='mobilenet_v1_1.0_224.onnx')
+    print(f'        MobileNet (v1): {round(mobilenet_v1_t*1000), 2} ms')
