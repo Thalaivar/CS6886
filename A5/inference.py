@@ -8,6 +8,9 @@ import numpy as np
 import sys
 sys.path.insert(0, '/home/dhruvlaad/DeepLearningExamples/PyTorch/Translation/GNMT')
 
+import torch
+import fairseq
+
 MODEL_DIR = '../../data/A5/models/'
 IMG_DIR = './'
 
@@ -43,6 +46,7 @@ SSD_RESNET = {
         'model_name': 'resnet34-ssd1200.onnx'
     }
 
+
 def format_input_image(img_path, resize, model_name):
     img = cv2.imread(img_path).astype(np.float32)
     # convert BGR to RGB format
@@ -71,7 +75,26 @@ def format_input_image(img_path, resize, model_name):
     
     return img
 
-def get_inference_time(model_name, input_name, output_name, img_file, input_size, batch=False):
+def get_inference_time(model_name, input_name=None, output_name=None, img_file=None, input_size=None, batch=False):
+    if model_name.endswith('onnx'):
+        return get_inference_time_onnx(model_name, input_name, output_name, img_file, input_size, batch)
+    
+    N = 30
+
+    en2de = torch.hub.load('pytorch/fairseq', 'transformer.wmt16.en-de', tokenizer='moses', bpe='subword_nmt')
+    en2de.eval()
+
+    assert isinstance(en2de.models[0], fairseq.models.transformer.TransformerModel)
+    en2de.cuda()
+
+    data = 'SysDL Assignment test translation'
+    start_time = time.clock()
+    for _ in range(N):
+        en2de.translate(data)
+    t_elapsed = time.clock() - start_time
+    return t_elapsed/N
+
+def get_inference_time_onnx(model_name, input_name, output_name, img_file, input_size, batch=False):
     N = 30
 
     model = MODEL_DIR + model_name
@@ -97,11 +120,14 @@ if __name__ == "__main__":
     mobilenet_v1_t = get_inference_time(**MOBILENET)
     ss_mobilenet_300x300_t = get_inference_time(**SSD_MOBILENET)
     resnet_34_ssd1200_t = get_inference_time(**SSD_RESNET)
+    gnmt_t = get_inference_time(model_name='gnmt')
 
-    print('\npython inference.py\nInference time for 30 runs:')
+    print(f'\npython inference.py\nInference time for 30 runs on {torch.cuda.get_device_name(0)}:')
     print('     Image Classification:')
     print(f'        ResNet50 (v1.5): {round(resnet_50_t*1000, 2)} ms')
     print(f'        MobileNet (v1): {round(mobilenet_v1_t*1000, 2)} ms')
     print(f'    Object Detection:')
     print(f'        SSD-MobileNet 300x300: {round(ss_mobilenet_300x300_t*1000, 2)} ms')
     print(f'        SSD-Resnet34 1200x1200: {round(resnet_34_ssd1200_t*1000, 2)} ms')
+    print(f'    Translation:')
+    print(f'        GNMT: {round(gnmt_t*1000, 2)} ms')
