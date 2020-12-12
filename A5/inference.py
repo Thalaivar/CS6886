@@ -5,9 +5,6 @@ import onnx
 import onnxruntime
 import numpy as np
 
-import sys
-sys.path.insert(0, '/home/dhruvlaad/DeepLearningExamples/PyTorch/Translation/GNMT')
-
 import torch
 import fairseq
 
