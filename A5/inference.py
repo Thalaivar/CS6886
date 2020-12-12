@@ -5,8 +5,12 @@ import onnx
 import onnxruntime
 import numpy as np
 
+import sys
+sys.path.insert(0, '/home/dhruvlaad/DeepLearningExamples/PyTorch/Translation/GNMT')
+
 MODEL_DIR = '../../data/A5/models/'
 IMG_DIR = './'
+
 MOBILENET = {   
         'input_name': 'input:0',
         'output_name': 'MobilenetV1/Predictions/Reshape_1:0',
