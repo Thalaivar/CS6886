@@ -72,9 +72,9 @@ def format_input_image(img_path, resize, model_name):
     
     return img
 
-def get_inference_time(model_name, input_name=None, output_name=None, img_file=None, input_size=None, batch=False):
+def get_inference_time(model_name, input_name=None, output_name=None, img_file=None, input_size=None):
     if model_name.endswith('onnx'):
-        return get_inference_time_onnx(model_name, input_name, output_name, img_file, input_size, batch)
+        return get_inference_time_onnx(model_name, input_name, output_name, img_file, input_size)
     
     N = 30
 
@@ -91,7 +91,7 @@ def get_inference_time(model_name, input_name=None, output_name=None, img_file=N
     t_elapsed = time.clock() - start_time
     return t_elapsed/N
 
-def get_inference_time_onnx(model_name, input_name, output_name, img_file, input_size, batch=False):
+def get_inference_time_onnx(model_name, input_name, output_name, img_file, input_size):
     N = 30
 
     model = MODEL_DIR + model_name
@@ -99,16 +99,10 @@ def get_inference_time_onnx(model_name, input_name, output_name, img_file, input
     session = onnxruntime.InferenceSession(model)
     data = format_input_image(img_file, input_size, model_name)
     
-    if batch:
-        data = np.array([data for _ in range(N)]).squeeze()
-        start_time = time.clock()
+    start_time = time.clock()
+    for _ in range(N):
         session.run([output_name], {input_name: data})
-        t_elapsed = time.clock() - start_time
-    else:
-        start_time = time.clock()
-        for _ in range(N):
-            session.run([output_name], {input_name: data})
-        t_elapsed = time.clock() - start_time
+    t_elapsed = time.clock() - start_time
     
     return t_elapsed/N
 
@@ -120,11 +114,12 @@ if __name__ == "__main__":
     gnmt_t = get_inference_time(model_name='gnmt')
 
     print(f'\npython inference.py\nInference time for 30 runs on {torch.cuda.get_device_name(0)}:')
-    print('     Image Classification:')
-    print(f'        ResNet50 (v1.5): {round(resnet_50_t*1000, 2)} ms')
-    print(f'        MobileNet (v1): {round(mobilenet_v1_t*1000, 2)} ms')
-    print(f'    Object Detection:')
-    print(f'        SSD-MobileNet 300x300: {round(ss_mobilenet_300x300_t*1000, 2)} ms')
-    print(f'        SSD-Resnet34 1200x1200: {round(resnet_34_ssd1200_t*1000, 2)} ms')
-    print(f'    Translation:')
-    print(f'        GNMT: {round(gnmt_t*1000, 2)} ms')
+    print(f'    ResNet50 (v1.5): {round(resnet_50_t*1000, 2)} ms')
+    print(f'\n\npython inference.py\nInference time for 30 runs on {torch.cuda.get_device_name(0)}:')
+    print(f'    MobileNet (v1): {round(mobilenet_v1_t*1000, 2)} ms')
+    print(f'\n\npython inference.py\nInference time for 30 runs on {torch.cuda.get_device_name(0)}:')
+    print(f'    SSD-MobileNet 300x300: {round(ss_mobilenet_300x300_t*1000, 2)} ms')
+    print(f'\n\npython inference.py\nInference time for 30 runs on {torch.cuda.get_device_name(0)}:')
+    print(f'    SSD-Resnet34 1200x1200: {round(resnet_34_ssd1200_t*1000, 2)} ms')
+    print(f'\n\npython inference.py\nInference time for 30 runs on {torch.cuda.get_device_name(0)}:')
+    print(f'    GNMT: {round(gnmt_t*1000, 2)} ms')

@@ -25,10 +25,10 @@ wget https://zenodo.org/record/3163026/files/ssd_mobilenet_v1_coco_2018_01_28.on
 wget https://zenodo.org/record/3228411/files/resnet34-ssd1200.onnx
 
 
-conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
+conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch -y 
 pip install fastBPE sacremoses subword_nmt omegaconf requests opencv-python onnx onnxruntime-gpu
 
 cd ~/
-git clone https://github.com/pytorch/fairseq
+git clone https://github.com/pytorch/fairseq.git
 cd fairseq
 pip install --editable ./
