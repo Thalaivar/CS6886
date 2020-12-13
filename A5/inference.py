@@ -8,7 +8,7 @@ import numpy as np
 import torch
 import fairseq
 
-MODEL_DIR = '../../data/A5/models/'
+MODEL_DIR = '/home/dhruvlaad/models/'
 IMG_DIR = './'
 
 MOBILENET = {   
