@@ -52,7 +52,7 @@ def checkpoint_bert():
     model.to('cuda:0')
     model.train()
 
-    _, out = model(input_ids, token_type_ids, input_mask, output_all_encoded_layers=False)
+    _, out = model(input_ids, token_type_ids, input_mask)
     mem_alloc = torch.cuda.max_memory_allocated() // (2**20)
 
     n_runs = 30
@@ -75,18 +75,26 @@ def checkpoint_bert():
 def plot_compute_vs_memory(compute, memory):
     import seaborn as sn
     import matplotlib.pyplot as plt
-
     sn.set_theme()
 
-    plt.scatter(compute[0], memory[0], 'bo', label='No Checkpoint')
-    plt.scatter(compute[1], memory[1], 'gv', label='Exp. 1')
-    plt.scatter(compute[2], memory[2], 'rs', label='Exp. 2')
-    plt.scatter(compute[3], memory[3], 'yp', label='Exp. 3')
-    plt.scatter(compute[4], memory[4], 'k+', label='Exp. 4')
-    plt.scatter(compute[5], memory[5], 'mD', label='Exp. 5')
+    # plt.scatter(compute[0], memory[0], c='b', marker='o', label='No Checkpoint')
+    plt.scatter(compute[1], memory[1], c='g', marker='v', label='Exp. 1')
+    plt.scatter(compute[2], memory[2], c='r', marker='s', label='Exp. 2')
+    plt.scatter(compute[3], memory[3], c='y', marker='p', label='Exp. 3')
+    plt.scatter(compute[4], memory[4], c='k', marker='+', label='Exp. 4')
+    # plt.scatter(compute[5], memory[5], c='m', marker='D', label='Exp. 5')
     plt.xlabel('Compute Time (ms)')
     plt.ylabel('Max Memory Allocated (MB)')
+    plt.legend(loc='lower left')
     plt.show()
 
 if __name__ == "__main__":
-    checkpoint_bert()
+    # checkpoint_bert()
+
+    # FUSECONV_MEM = [273, 44, 63, 63, 63, 44]
+    # FUSECONV_COM = [52.79, 67.78, 67.37, 66.11, 64.79, 65.73]
+    # plot_compute_vs_memory(FUSECONV_COM, FUSECONV_MEM)
+
+    BERT_MEM = [5931, 1545, 1413, 4389, 1683]
+    BERT_COM = [958.19, 1289.56, 1267.43, 1052.91, 1258.12]
+    plot_compute_vs_memory(BERT_COM, BERT_MEM)

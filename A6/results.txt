@@ -23,10 +23,16 @@ Include last convs in checkpoint
 BERT:
 
 1. No checkpointing
-428MB 42.84ms
+5931MB 958.19ms
 
 2. Checkpoint each BertLayer
-423MB 64.42
+1545MB 1289.56ms
 
 3. Checkpoint all BertLayers
-423MB 58.89
+1413MB 1267.43ms
+
+4. Checkpoint BertAttention forward pass
+4389MB 1052ms
+
+5. Checkpoint BertAttention forward pass alongwith (BertIntermediate and BertOutput)
+1683MB 1258.12ms
