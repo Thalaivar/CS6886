@@ -2,9 +2,10 @@ import wandb
 import time
 import torch
 import torch.utils.checkpoint as checkpoint
+import numpy as np
 
 from fuseconv import FUSEConv
-from bert import BertForQuestionAnswering, BertConfig
+from bert import *
 from torch.autograd import Variable
 
 def checkpoint_FUSEConv():
@@ -37,16 +38,16 @@ def checkpoint_FUSEConv():
     wandb.save('./main.py')
 
 def checkpoint_bert():
-    # wandb.init(project="mini-assignment-6", name="no checkpoint")
+    wandb.init(project="mini-assignment-6", name="experiment-2")
 
-    input_ids = torch.LongTensor([[31, 51, 99], [15, 5, 0]]).to('cuda:0')
-    input_mask = torch.LongTensor([[1, 1, 1], [1, 1, 0]]).to('cuda:0')
-    token_type_ids = torch.LongTensor([[0, 0, 1], [0, 1, 0]]).to('cuda:0')
+    input_ids = torch.LongTensor(np.random.randint(low=0, high=35, size=(24, 64))).to('cuda:0')
+    input_mask = torch.LongTensor(np.random.randint(low=0, high=2, size=(24, 64))).to('cuda:0')
+    token_type_ids = torch.LongTensor(np.random.randint(low=0, high=2, size=(24, 64))).to('cuda:0')
 
     config = BertConfig(vocab_size_or_config_json_file=32000, hidden_size=768,
         num_hidden_layers=12, num_attention_heads=12, intermediate_size=3072)
 
-    model = BertForQuestionAnswering.from_pretrained('bert-base-uncased')
+    model = BertModel.from_pretrained('bert-large-uncased')
 
     model.to('cuda:0')
     model.train()
@@ -54,7 +55,7 @@ def checkpoint_bert():
     _, out = model(input_ids, token_type_ids, input_mask, output_all_encoded_layers=False)
     mem_alloc = torch.cuda.max_memory_allocated() // (2**20)
 
-    n_runs = 100
+    n_runs = 30
     start_t = time.perf_counter()
     for _ in range(n_runs):
         _, out = model(input_ids, token_type_ids, input_mask)
@@ -66,10 +67,10 @@ def checkpoint_bert():
 
     print(f'\nMemory allocated: {mem_alloc} MB\nTime elapsed = {round(t_elapsed * 1000, 2)} ms')
 
-    # info = {'Memory allocated (MB)': mem_alloc, 'Time Taken': t_elapsed}
-    # wandb.config.update(info)
-    # wandb.save('./bert.py')
-    # wandb.save('./main.py')
+    info = {'Memory allocated (MB)': mem_alloc, 'Time Taken': t_elapsed}
+    wandb.config.update(info)
+    wandb.save('./bert.py')
+    wandb.save('./main.py')
 
 def plot_compute_vs_memory(compute, memory):
     import seaborn as sn

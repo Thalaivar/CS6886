@@ -272,10 +272,15 @@ class BertAttention(nn.Module):
         self.output = BertSelfOutput(config)
 
     def forward(self, input_tensor, attention_mask):
+        # self_output = self.self(input_tensor, attention_mask)
+        # attention_output = self.output(self_output, input_tensor)
+        attention_output = checkpoint.checkpoint(self.checkpoint_forward_pass, input_tensor, attention_mask)
+        return attention_output
+
+    def checkpoint_forward_pass(self, input_tensor, attention_mask):
         self_output = self.self(input_tensor, attention_mask)
         attention_output = self.output(self_output, input_tensor)
         return attention_output
-
 
 class BertIntermediate(nn.Module):
     def __init__(self, config):
@@ -317,6 +322,10 @@ class BertLayer(nn.Module):
         layer_output = self.output(intermediate_output, attention_output)
         return layer_output
 
+    def checkpoint_forward_pass(self, hidden_states, attention_mask):
+        attention_output = self.attention(hidden_states, attention_mask)
+        intermediate_output = self.intermediate(attention_output)
+        return intermediate_output
 
 class BertEncoder(nn.Module):
     def __init__(self, config):
