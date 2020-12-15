@@ -27,5 +27,5 @@ wget https://zenodo.org/record/3228411/files/resnet34-ssd1200.onnx
 
 
 conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch -y 
-pip install opencv-python onnx onnxruntime-gpu
+pip install opencv-python onnx onnxruntime-gpu requests sacremoses subword-nmt
 pip install fairseq==0.10.0
