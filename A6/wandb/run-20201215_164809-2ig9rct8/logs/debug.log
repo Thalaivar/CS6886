@@ -1,0 +1,11 @@
+2020-12-15 16:48:09,111 INFO    MainThread:2460 [wandb_setup.py:_flush():70] setting env: {}
+2020-12-15 16:48:09,111 INFO    MainThread:2460 [wandb_setup.py:_flush():70] multiprocessing start_methods=spawn
+2020-12-15 16:48:09,111 INFO    MainThread:2460 [wandb_setup.py:_flush():70] setting login settings: {}
+2020-12-15 16:48:09,111 INFO    MainThread:2460 [wandb_init.py:_log_setup():303] Logging user logs to D:\IIT\Coursework\SysDL\CS6886\A6\wandb\run-20201215_164809-2ig9rct8\logs\debug.log
+2020-12-15 16:48:09,112 INFO    MainThread:2460 [wandb_init.py:_log_setup():304] Logging internal logs to D:\IIT\Coursework\SysDL\CS6886\A6\wandb\run-20201215_164809-2ig9rct8\logs\debug-internal.log
+2020-12-15 16:48:13,498 INFO    MainThread:2460 [wandb_run.py:_console_start():1237] atexit reg
+2020-12-15 16:48:13,499 INFO    MainThread:2460 [wandb_run.py:_redirect():1104] redirect: SettingsConsole.WRAP
+2020-12-15 16:48:13,499 INFO    MainThread:2460 [wandb_run.py:_redirect():1135] Wrapping output streams.
+2020-12-15 16:48:13,499 INFO    MainThread:2460 [wandb_run.py:_redirect():1151] Redirects installed.
+2020-12-15 16:48:29,610 INFO    MainThread:2460 [wandb_run.py:_atexit_cleanup():1207] got exitcode: 255
+2020-12-15 16:48:29,611 INFO    MainThread:2460 [wandb_run.py:_restore():1179] restore

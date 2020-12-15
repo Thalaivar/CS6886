@@ -333,8 +333,22 @@ class BertEncoder(nn.Module):
                 all_encoder_layers.append(hidden_states)
         if not output_all_encoded_layers:
             all_encoder_layers.append(hidden_states)
+
+        # input_args = (hidden_states, attention_mask)
+        # all_encoder_layers = checkpoint.checkpoint(self.checkpointed_forward_pass(*self.layer), *input_args)
         return all_encoder_layers
 
+    def checkpointed_forward_pass(self, *modules):
+        def ckpt_forward_pass(hidden_states, attention_mask, output_all_encoded_layers=False):
+            all_encoder_layers = []
+            for module in modules:
+                hidden_states = module(hidden_states, attention_mask)
+                if output_all_encoded_layers:
+                    all_encoder_layers.append(hidden_states)
+            if not output_all_encoded_layers:
+                all_encoder_layers.append(hidden_states)
+            return all_encoder_layers[0]
+        return ckpt_forward_pass
 
 class BertPooler(nn.Module):
     def __init__(self, config):
@@ -607,20 +621,15 @@ class BertModel(PreTrainedBertModel):
         extended_attention_mask = extended_attention_mask.to(dtype=next(self.parameters()).dtype) # fp16 compatibility
         extended_attention_mask = (1.0 - extended_attention_mask) * -10000.0
 
-        # embedding_output = self.embeddings(input_ids, token_type_ids)
-        embedding_inputs = (input_ids, token_type_ids)
-        embedding_output = checkpoint.checkpoint(self.embeddings, *embedding_inputs)
+        embedding_output = self.embeddings(input_ids, token_type_ids)
         
-        # encoded_layers = self.encoder(embedding_output,
-        #                               extended_attention_mask,
-        #                               output_all_encoded_layers=output_all_encoded_layers)
-        encoder_input_args = (embedding_output, extended_attention_mask, output_all_encoded_layers)
-        encoded_layers = checkpoint.checkpoint(self.encoder, *encoder_input_args)
+        encoded_layers = self.encoder(embedding_output,
+                                      extended_attention_mask,
+                                      output_all_encoded_layers=output_all_encoded_layers)
 
         sequence_output = encoded_layers[-1]
 
-        # pooled_output = self.pooler(sequence_output)
-        pooled_output = checkpoint.checkpoint(self.pooler, sequence_output)
+        pooled_output = self.pooler(sequence_output)
         
         if not output_all_encoded_layers:
             encoded_layers = encoded_layers[-1]

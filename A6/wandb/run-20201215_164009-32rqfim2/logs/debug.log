@@ -1,0 +1,42 @@
+2020-12-15 16:40:09,856 INFO    MainThread:9632 [wandb_setup.py:_flush():70] setting env: {}
+2020-12-15 16:40:09,856 INFO    MainThread:9632 [wandb_setup.py:_flush():70] multiprocessing start_methods=spawn
+2020-12-15 16:40:09,856 INFO    MainThread:9632 [wandb_setup.py:_flush():70] setting login settings: {}
+2020-12-15 16:40:09,857 INFO    MainThread:9632 [wandb_init.py:_log_setup():303] Logging user logs to D:\IIT\Coursework\SysDL\CS6886\A6\wandb\run-20201215_164009-32rqfim2\logs\debug.log
+2020-12-15 16:40:09,857 INFO    MainThread:9632 [wandb_init.py:_log_setup():304] Logging internal logs to D:\IIT\Coursework\SysDL\CS6886\A6\wandb\run-20201215_164009-32rqfim2\logs\debug-internal.log
+2020-12-15 16:40:13,021 INFO    MainThread:9632 [wandb_run.py:_console_start():1237] atexit reg
+2020-12-15 16:40:13,021 INFO    MainThread:9632 [wandb_run.py:_redirect():1104] redirect: SettingsConsole.WRAP
+2020-12-15 16:40:13,022 INFO    MainThread:9632 [wandb_run.py:_redirect():1135] Wrapping output streams.
+2020-12-15 16:40:13,022 INFO    MainThread:9632 [wandb_run.py:_redirect():1151] Redirects installed.
+2020-12-15 16:40:15,699 INFO    MainThread:9632 [wandb_run.py:_atexit_cleanup():1207] got exitcode: 1
+2020-12-15 16:40:15,699 INFO    MainThread:9632 [wandb_run.py:_restore():1179] restore
+2020-12-15 16:40:15,704 INFO    MainThread:9632 [wandb_run.py:_wait_for_finish():1324] got exit ret: uuid: "9b60cdfc9b744274b2afb0dfd5eaa1bb"
+response {
+  poll_exit_response {
+    file_counts {
+      wandb_count: 1
+    }
+    pusher_stats {
+      uploaded_bytes: 750
+      total_bytes: 750
+    }
+  }
+}
+
+2020-12-15 16:40:17,706 INFO    MainThread:9632 [wandb_run.py:_wait_for_finish():1324] got exit ret: uuid: "9af74c77de8845cc97bdf5343880d0c8"
+response {
+  poll_exit_response {
+    done: true
+    exit_result {
+    }
+    file_counts {
+      wandb_count: 5
+    }
+    pusher_stats {
+      uploaded_bytes: 3038
+      total_bytes: 3038
+    }
+  }
+}
+
+2020-12-15 16:40:18,778 INFO    MainThread:9632 [wandb_run.py:_show_files():1536] logging synced files
+2020-12-15 16:40:18,782 INFO    MainThread:9632 [internal.py:handle_exit():138] Internal process exited

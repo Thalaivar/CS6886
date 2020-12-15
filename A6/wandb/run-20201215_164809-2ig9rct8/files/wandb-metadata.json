@@ -1,0 +1,24 @@
+{
+    "os": "Windows-10-10.0.18362-SP0",
+    "python": "3.8.5",
+    "heartbeatAt": "2020-12-15T11:18:12.966601",
+    "startedAt": "2020-12-15T11:18:09.109490",
+    "docker": null,
+    "gpu": "GeForce GTX 1050",
+    "gpu_count": 1,
+    "cpu_count": 12,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "codePath": "A6\\main.py",
+    "program": "main.py",
+    "git": {
+        "remote": "https://github.com/Thalaivar/CS6886.git",
+        "commit": "fe68c57c774983d257d27eeae8bcbaf3a231477b"
+    },
+    "email": "dhruvlaad@gmail.com",
+    "root": "D:/IIT/Coursework/SysDL/CS6886",
+    "host": "ramanujan",
+    "username": "Dhruv Laad",
+    "executable": "C:\\Users\\dhruvlaad\\anaconda3\\envs\\minerl\\python.exe"
+}

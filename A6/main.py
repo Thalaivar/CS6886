@@ -4,7 +4,7 @@ import torch
 import torch.utils.checkpoint as checkpoint
 
 from fuseconv import FUSEConv
-from bert import BertModel, BertConfig
+from bert import BertForQuestionAnswering, BertConfig
 from torch.autograd import Variable
 
 def checkpoint_FUSEConv():
@@ -37,27 +37,27 @@ def checkpoint_FUSEConv():
     wandb.save('./main.py')
 
 def checkpoint_bert():
-    # wandb.init(project="mini-assignment-6", name="delete")
+    # wandb.init(project="mini-assignment-6", name="no checkpoint")
 
-    input_ids = torch.LongTensor([[31, 51, 99], [15, 5, 0]], requires_grad=True).to('cuda:0')
-    input_mask = torch.LongTensor([[1, 1, 1], [1, 1, 0]], requires_grad=True).to('cuda:0')
-    token_type_ids = torch.LongTensor([[0, 0, 1], [0, 1, 0]], requires_grad=True).to('cuda:0')
-    
+    input_ids = torch.LongTensor([[31, 51, 99], [15, 5, 0]]).to('cuda:0')
+    input_mask = torch.LongTensor([[1, 1, 1], [1, 1, 0]]).to('cuda:0')
+    token_type_ids = torch.LongTensor([[0, 0, 1], [0, 1, 0]]).to('cuda:0')
+
     config = BertConfig(vocab_size_or_config_json_file=32000, hidden_size=768,
         num_hidden_layers=12, num_attention_heads=12, intermediate_size=3072)
 
-    model = BertModel(config=config)
+    model = BertForQuestionAnswering.from_pretrained('bert-base-uncased')
 
     model.to('cuda:0')
     model.train()
 
-    all_encoder_layers, pooled_output = model(input_ids, token_type_ids, input_mask)
+    _, out = model(input_ids, token_type_ids, input_mask, output_all_encoded_layers=False)
     mem_alloc = torch.cuda.max_memory_allocated() // (2**20)
 
     n_runs = 100
     start_t = time.perf_counter()
     for _ in range(n_runs):
-        all_encoder_layers, out = model(input_ids, token_type_ids, input_mask)
+        _, out = model(input_ids, token_type_ids, input_mask)
         model.zero_grad()
         out.sum().backward()
 
@@ -68,7 +68,7 @@ def checkpoint_bert():
 
     # info = {'Memory allocated (MB)': mem_alloc, 'Time Taken': t_elapsed}
     # wandb.config.update(info)
-    # wandb.save('./fuseconv.py')
+    # wandb.save('./bert.py')
     # wandb.save('./main.py')
 
 def plot_compute_vs_memory(compute, memory):

@@ -23,6 +23,10 @@ Include last convs in checkpoint
 BERT:
 
 1. No checkpointing
-428MB 100.27ms
+428MB 42.84ms
 
-2. 
+2. Checkpoint each BertLayer
+423MB 64.42
+
+3. Checkpoint all BertLayers
+423MB 58.89
