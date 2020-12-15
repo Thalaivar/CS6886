@@ -39,10 +39,10 @@ def checkpoint_FUSEConv():
 def checkpoint_bert():
     # wandb.init(project="mini-assignment-6", name="delete")
 
-    input_ids = torch.LongTensor([[31, 51, 99], [15, 5, 0]]).to('cuda:0')
-    input_mask = torch.LongTensor([[1, 1, 1], [1, 1, 0]]).to('cuda:0')
-    token_type_ids = torch.LongTensor([[0, 0, 1], [0, 1, 0]]).to('cuda:0')
-
+    input_ids = torch.LongTensor([[31, 51, 99], [15, 5, 0]], requires_grad=True).to('cuda:0')
+    input_mask = torch.LongTensor([[1, 1, 1], [1, 1, 0]], requires_grad=True).to('cuda:0')
+    token_type_ids = torch.LongTensor([[0, 0, 1], [0, 1, 0]], requires_grad=True).to('cuda:0')
+    
     config = BertConfig(vocab_size_or_config_json_file=32000, hidden_size=768,
         num_hidden_layers=12, num_attention_heads=12, intermediate_size=3072)
 

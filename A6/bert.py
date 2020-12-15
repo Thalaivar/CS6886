@@ -608,12 +608,20 @@ class BertModel(PreTrainedBertModel):
         extended_attention_mask = (1.0 - extended_attention_mask) * -10000.0
 
         # embedding_output = self.embeddings(input_ids, token_type_ids)
-        embedding_output = checkpoint.checkpoint(function=self.embeddings, input_ids, token_type_ids)
-        encoded_layers = self.encoder(embedding_output,
-                                      extended_attention_mask,
-                                      output_all_encoded_layers=output_all_encoded_layers)
+        embedding_inputs = (input_ids, token_type_ids)
+        embedding_output = checkpoint.checkpoint(self.embeddings, *embedding_inputs)
+        
+        # encoded_layers = self.encoder(embedding_output,
+        #                               extended_attention_mask,
+        #                               output_all_encoded_layers=output_all_encoded_layers)
+        encoder_input_args = (embedding_output, extended_attention_mask, output_all_encoded_layers)
+        encoded_layers = checkpoint.checkpoint(self.encoder, *encoder_input_args)
+
         sequence_output = encoded_layers[-1]
-        pooled_output = self.pooler(sequence_output)
+
+        # pooled_output = self.pooler(sequence_output)
+        pooled_output = checkpoint.checkpoint(self.pooler, sequence_output)
+        
         if not output_all_encoded_layers:
             encoded_layers = encoded_layers[-1]
         return encoded_layers, pooled_output
