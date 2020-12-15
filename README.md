@@ -23,3 +23,5 @@ python inference.py
 ```
 
 The latencies of each model are outputted to the terminal in a readable format.
+
+**Note:** The above code was run on an Ubuntu 16.04 machine
