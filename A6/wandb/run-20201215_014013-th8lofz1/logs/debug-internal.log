@@ -1,0 +1,33 @@
+2020-12-15 01:40:14,564 INFO    MainThread:23108 [internal.py:wandb_internal():63] W&B internal server running at pid: 23108
+2020-12-15 01:40:14,565 DEBUG   HandlerThread:23108 [handler.py:handle_request():55] handle_request: check_version
+2020-12-15 01:40:14,565 INFO    WriterThread:23108 [datastore.py:open_for_write():76] open: D:\IIT\Coursework\SysDL\CS6886\A6\wandb\run-20201215_014013-th8lofz1\run-th8lofz1.wandb
+2020-12-15 01:40:14,566 DEBUG   SenderThread:23108 [sender.py:send():90] send: header
+2020-12-15 01:40:14,567 DEBUG   SenderThread:23108 [sender.py:send():90] send: request
+2020-12-15 01:40:14,567 DEBUG   SenderThread:23108 [sender.py:send_request():99] send_request: check_version
+2020-12-15 01:40:14,573 DEBUG   Thread-8  :23108 [connectionpool.py:_new_conn():971] Starting new HTTPS connection (1): pypi.org:443
+2020-12-15 01:40:15,422 DEBUG   Thread-8  :23108 [connectionpool.py:_make_request():452] https://pypi.org:443 "GET /pypi/wandb/json HTTP/1.1" 200 52216
+2020-12-15 01:40:15,639 DEBUG   SenderThread:23108 [sender.py:send():90] send: run
+2020-12-15 01:40:15,653 DEBUG   SenderThread:23108 [util.py:is_cygwin_git():315] Failed checking if running in CYGWIN due to: FileNotFoundError(2, 'The system cannot find the file specified', None, 2, None)
+2020-12-15 01:40:15,655 DEBUG   SenderThread:23108 [cmd.py:execute():718] Popen(['git', 'cat-file', '--batch-check'], cwd=D:\IIT\Coursework\SysDL\CS6886, universal_newlines=False, shell=None, istream=<valid stream>)
+2020-12-15 01:40:15,691 DEBUG   SenderThread:23108 [connectionpool.py:_new_conn():971] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-12-15 01:40:16,101 WARNING MainThread:23108 [internal.py:wandb_internal():117] Internal process interrupt: 1
+2020-12-15 01:40:16,288 WARNING MainThread:23108 [internal.py:wandb_internal():117] Internal process interrupt: 2
+2020-12-15 01:40:16,289 ERROR   MainThread:23108 [internal.py:wandb_internal():120] Internal process interrupted.
+2020-12-15 01:40:16,500 DEBUG   SenderThread:23108 [connectionpool.py:_make_request():452] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-12-15 01:40:16,533 INFO    SenderThread:23108 [dir_watcher.py:__init__():165] watching files in: D:\IIT\Coursework\SysDL\CS6886\A6\wandb\run-20201215_014013-th8lofz1\files
+2020-12-15 01:40:16,533 INFO    SenderThread:23108 [sender.py:_start_run_threads():487] run started: th8lofz1 with start time 1607976613
+2020-12-15 01:40:16,533 INFO    SenderThread:23108 [sender.py:finish():642] shutting down sender
+2020-12-15 01:40:16,533 INFO    SenderThread:23108 [dir_watcher.py:finish():279] shutting down directory watcher
+2020-12-15 01:40:16,641 INFO    WriterThread:23108 [datastore.py:close():257] close: D:\IIT\Coursework\SysDL\CS6886\A6\wandb\run-20201215_014013-th8lofz1\run-th8lofz1.wandb
+2020-12-15 01:40:16,641 INFO    HandlerThread:23108 [handler.py:finish():271] shutting down handler
+2020-12-15 01:40:17,535 INFO    SenderThread:23108 [dir_watcher.py:finish():309] scan: D:\IIT\Coursework\SysDL\CS6886\A6\wandb\run-20201215_014013-th8lofz1\files
+2020-12-15 01:40:17,535 INFO    SenderThread:23108 [dir_watcher.py:finish():315] scan save: D:\IIT\Coursework\SysDL\CS6886\A6\wandb\run-20201215_014013-th8lofz1\files\config.yaml config.yaml
+2020-12-15 01:40:17,537 INFO    SenderThread:23108 [file_pusher.py:finish():169] shutting down file pusher
+2020-12-15 01:40:17,537 INFO    SenderThread:23108 [file_pusher.py:join():174] waiting for file pusher
+2020-12-15 01:40:17,550 DEBUG   Thread-14 :23108 [connectionpool.py:_new_conn():971] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-12-15 01:40:18,194 DEBUG   Thread-14 :23108 [connectionpool.py:_make_request():452] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-12-15 01:40:18,208 DEBUG   Thread-14 :23108 [connectionpool.py:_new_conn():971] Starting new HTTPS connection (1): storage.googleapis.com:443
+2020-12-15 01:40:19,030 DEBUG   Thread-14 :23108 [connectionpool.py:_make_request():452] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/thalaivar/mini-assignment-6/th8lofz1/config.yaml?Expires=1608063020&GoogleAccessId=wandb-production%40appspot.gserviceaccount.com&Signature=0VCP1ccI4FJag%2FNpgZBj8utgjwHSAWOF0PeD%2BmATJA5xZiyWKkEQoIGqP7oiPs9pc%2F%2BoBQ64e0QQ1CjI7oqv8h9ZayC81pONxR4mXNx9npK1544IkRwANUI9CfT3R%2FyWrX9wF3EOOYubL9jjyIH3fXeUYYXecBMkZGipii6zlCTbcfzJ3oUjkxtc2KL3eHEujP0UmAZl6%2FP%2Frbec%2FcJvJGAO0ZJXljqMQahc4sdZo4rI15wcYfnsWE2NfOznoSPoqIJGzjONjXe0iQ9QMbtILyjag5SI8F%2FjQdzxWXd5TJCPo1Ix9T%2FxcFvZyQIe%2FCIRd6A%2Fst%2FHGuOYlpI9UOV4sg%3D%3D HTTP/1.1" 200 0
+2020-12-15 01:40:19,032 INFO    Thread-14 :23108 [upload_job.py:push():131] Uploaded file D:\IIT\Coursework\SysDL\CS6886\A6\wandb\run-20201215_014013-th8lofz1\files\config.yaml
+2020-12-15 01:40:19,542 DEBUG   Thread-9  :23108 [connectionpool.py:_new_conn():971] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-12-15 01:40:20,542 DEBUG   Thread-9  :23108 [connectionpool.py:_make_request():452] https://api.wandb.ai:443 "POST /files/thalaivar/mini-assignment-6/th8lofz1/file_stream HTTP/1.1" 200 None

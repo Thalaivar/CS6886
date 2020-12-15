@@ -1,0 +1,16 @@
+wandb_version: 1
+
+Memory allocated (MB):
+  desc: null
+  value: 63
+Time Taken:
+  desc: null
+  value: 0.064792139
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.10.12
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.8.5

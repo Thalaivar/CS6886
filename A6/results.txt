@@ -1,0 +1,28 @@
+FUSEConv:
+
+1. No checkpointing:
+273MB 52.79ms
+
+2. Experiment 1:
+One checkpoint in between fuse blocks, to split up memory requirement
+44MB 67.78ms
+
+3. Experiment 2:
+Split up the FUSE blocks into equal chunks (by number)
+63MB 67.37ms
+
+4. Experiment 3:
+Split up the FUSE blocks into equal chunks (by weights)
+63MB 66.11ms
+
+5. Experiment 4:
+Include last convs in checkpoint
+63MB 64.79ms
+
+
+BERT:
+
+1. No checkpointing
+428MB 100.27ms
+
+2. 

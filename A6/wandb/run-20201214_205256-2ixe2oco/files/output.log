@@ -1,0 +1,11 @@
+
+Memory allocated: 273 MB
+Time elapsed = 200.43 ms
+Traceback (most recent call last):
+  File ".\main.py", line 41, in <module>
+    checkpoint_FUSEConv()
+  File ".\main.py", line 35, in checkpoint_FUSEConv
+    wandb.save('fuseconv.py')
+  File "C:\Users\dhruvlaad\anaconda3\envs\minerl\lib\site-packages\wandb\sdk\wandb_run.py", line 882, in save
+    os.symlink(abs_path, wandb_path)
+OSError: [WinError 1314] A required privilege is not held by the client: 'D:\\IIT\\Coursework\\SysDL\\CS6886\\A6\\fuseconv.py' -> 'D:\\IIT\\Coursework\\SysDL\\CS6886\\A6\\wandb\\run-20201214_205256-2ixe2oco\\files\\fuseconv.py'

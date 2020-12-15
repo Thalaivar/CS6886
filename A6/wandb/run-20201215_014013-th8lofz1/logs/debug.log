@@ -1,0 +1,24 @@
+2020-12-15 01:40:13,691 INFO    MainThread:16892 [wandb_setup.py:_flush():70] setting env: {}
+2020-12-15 01:40:13,692 INFO    MainThread:16892 [wandb_setup.py:_flush():70] multiprocessing start_methods=spawn
+2020-12-15 01:40:13,692 INFO    MainThread:16892 [wandb_setup.py:_flush():70] setting login settings: {}
+2020-12-15 01:40:13,692 INFO    MainThread:16892 [wandb_init.py:_log_setup():303] Logging user logs to D:\IIT\Coursework\SysDL\CS6886\A6\wandb\run-20201215_014013-th8lofz1\logs\debug.log
+2020-12-15 01:40:13,692 INFO    MainThread:16892 [wandb_init.py:_log_setup():304] Logging internal logs to D:\IIT\Coursework\SysDL\CS6886\A6\wandb\run-20201215_014013-th8lofz1\logs\debug-internal.log
+2020-12-15 01:40:16,530 WARNING MainThread:16892 [wandb_init.py:init():595] interrupted
+Traceback (most recent call last):
+  File "C:\Users\dhruvlaad\anaconda3\envs\minerl\lib\site-packages\wandb\sdk\wandb_init.py", line 575, in init
+    run = wi.init()
+  File "C:\Users\dhruvlaad\anaconda3\envs\minerl\lib\site-packages\wandb\sdk\wandb_init.py", line 411, in init
+    ret = backend.interface.communicate_run(run, timeout=30)
+  File "C:\Users\dhruvlaad\anaconda3\envs\minerl\lib\site-packages\wandb\sdk\interface\interface.py", line 542, in communicate_run
+    return self._communicate_run(run, timeout=timeout)
+  File "C:\Users\dhruvlaad\anaconda3\envs\minerl\lib\site-packages\wandb\sdk\interface\interface.py", line 533, in _communicate_run
+    resp = self._communicate(req, timeout=timeout)
+  File "C:\Users\dhruvlaad\anaconda3\envs\minerl\lib\site-packages\wandb\sdk\interface\interface.py", line 447, in _communicate
+    return future.get(timeout)
+  File "C:\Users\dhruvlaad\anaconda3\envs\minerl\lib\site-packages\wandb\sdk\interface\interface.py", line 63, in get
+    is_set = self._object_ready.wait(timeout)
+  File "C:\Users\dhruvlaad\anaconda3\envs\minerl\lib\threading.py", line 558, in wait
+    signaled = self._cond.wait(timeout)
+  File "C:\Users\dhruvlaad\anaconda3\envs\minerl\lib\threading.py", line 306, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt
