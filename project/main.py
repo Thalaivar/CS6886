@@ -12,11 +12,11 @@ from models.mobilenet import MobileNetV3
 from efficientnet_pytorch import EfficientNet
 
 def get_model_info(model, name):
-    wandb.init(project='sysdl-term-project', name=f'{model}-inference')
-    wandb.watch(model)
-    
     model.eval()
     model.to('cuda:0')
+    
+    wandb.init(project='sysdl-term-project', name=f'{model}-inference')
+    wandb.watch(model)
 
     total_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     trainable_params = sum(p.numel() for p in model.parameters())
