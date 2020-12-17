@@ -1,3 +1,0 @@
-[submodule "project/models/nasnet"]
-	path = project/models/nasnet
-	url = https://github.com/wandering007/nasnet-pytorch.git
