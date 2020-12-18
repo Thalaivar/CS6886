@@ -14,8 +14,8 @@ from efficientnet_pytorch import EfficientNet
 def get_model_info(model, name):
     model.eval()
     model.to('cuda:0')
-
-    wandb.init(project='sysdl-term-project', name=f'{name}-inference')
+    
+    wandb.init(project='sysdl-term-project', name=f'{model}-inference')
     wandb.watch(model)
 
     total_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
