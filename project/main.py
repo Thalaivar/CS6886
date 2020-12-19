@@ -16,7 +16,7 @@ def get_model_info(model, name):
     model.eval()
     model.to('cuda:0')
 
-    wandb.init(project='sysdl-term-project', name=f'{name}-inference')
+    run = wandb.init(project='sysdl-term-project', name=f'{name}-inference')
     wandb.watch(model)
 
     total_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
@@ -39,9 +39,14 @@ def get_model_info(model, name):
         'Trainable Parameters': trainable_params,
         'Total Parameters': total_params,
         'Inference Latency': inference_latency/inference_runs,
-        'GPU Name': torch.cuda.get_device_name()
+        'GPU Name': torch.cuda.get_device_name(),
     }
     
+    run.config.update(model_info)
+    run.config.batch_size = input_tensor.shape[0]
+    run.config.inference_runs = inference_runs
+    run.finish()
+
     return model_info
 
 model_infos = []
@@ -81,7 +86,7 @@ model_infos.append(get_model_info(**run))
 del run
 torch.cuda.empty_cache()
 
-run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'resnext101_32x8d', pretrained=False), , 'name': 'ResNeXt-101'}'
+run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'resnext101_32x8d', pretrained=False), 'name': 'ResNeXt-101'}
 model_infos.append(get_model_info(**run))
 del run
 torch.cuda.empty_cache()
