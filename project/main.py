@@ -44,50 +44,54 @@ def get_model_info(model, name):
     
     return model_info
 
-# nasnet_mobile = NASNetAMobile()
-# model_info = get_model_info(nasnet_mobile, 'NASNet-A Small')
-# print(model_info)
+model_infos = []
 
-# nasnet = NASNetALarge()
-# model_info = get_model_info(nasnet, 'NASNet-A Large')
-# print(model_info)
+run = {'model': NASNetAMobile(), 'name': 'NASNetA-Small'}
+model_infos.append(get_model_info(**run))
+del run
 
-# FBNetv2 = fbnet('dmasking_f4')
-# model_info = get_model_info(FBNetv2, name='FBNet-v2')
-# print(model_info)
+run = {'model': NASNetALarge(), 'name': 'NASNetA-Large'}
+model_infos.append(get_model_info(**run))
+del run
 
-# mnasnet = MnasNet()
-# model_info = get_model_info(mnasnet, name='MNasNet')
-# print(model_info)
+run = {'model': fbnet('dmasking_f4'), 'name': 'FBNet-V2'}
+model_infos.append(get_model_info(**run))
+del run
 
-# inceptionv3 = torch.hub.load('pytorch/vision:v0.6.0', 'inception_v3', pretrained=False)
-# model_info = get_model_info(inceptionv3, name='Inception-v3')
-# print(model_info)
+run = {'model': MnasNet(), 'name': 'MNasNet'}
+model_infos.append(get_model_info(**run))
+del run
 
-# efficientnetb7 = EfficientNet.from_name('efficientnet-b7')
-# model_info = get_model_info(efficientnetb7, name='EfficientNetB7')
-# print(model_info)
+run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'inception_v3', pretrained=False), 'name': 'Inception-V3'}
+model_infos.append(get_model_info(**run))
+del run
 
-# efficientnetb0 = EfficientNet.from_name('efficientnet-b0')
-# model_info = get_model_info(efficientnetb0, name='EfficientNetB0')
-# print(model_info)
+run = {'model': EfficientNet.from_name('efficientnet-b7'), 'name': 'EfficientNet-B7'}
+model_infos.append(get_model_info(**run))
+del run
 
-# resnext_101 = torch.hub.load('pytorch/vision:v0.6.0', 'resnext101_32x8d', pretrained=False)
-# model_info = get_model_info(resnext_101, name='ResNeXt-101')
-# print(model_info)
+run = {'model': EfficientNet.from_name('efficientnet-b0'), 'name': 'EfficientNet-B0'}
+model_infos.append(get_model_info(**run))
+del run
 
-# mobilenet_v2 = torch.hub.load('pytorch/vision:v0.6.0', 'mobilenet_v2', pretrained=True)
-# model_info = get_model_info(mobilenet_v2, name='MobileNet-V2')
-# print(model_info)
+run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'resnext101_32x8d', pretrained=False), , 'name': 'ResNeXt-101'}'
+model_infos.append(get_model_info(**run))
+del run
 
-# mobilenet_v3 = MobileNetV3(mode='large')
-# model_info = get_model_info(mobilenet_v3, name='MobileNetV3')
-# print(model_info)
+run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'mobilenet_v2', pretrained=True), 'name': 'MobileNet-V2'}
+model_infos.append(get_model_info(**run))
+del run
 
-# resent50 = torch.hub.load('pytorch/vision:v0.6.0', 'resnet50', pretrained=False)
-# model_info = get_model_info(resent50, 'ResNet-50')
-# print(model_info)
+run = {'model': MobileNetV3(mode='large'), 'name': 'MobileNet-V3'}
+model_infos.append(get_model_info(**run))
+del run
 
-dsnas_240 = load()
-model_info = get_model_info(dsnas_240, name='DSNASsearch240')
-print(model_info))
+run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'resnet50', pretrained=False), 'name': 'ResNet-50'}
+model_infos.append(get_model_info(**run))
+del run
+
+run = {'model': load(), 'name': 'DSNASsearch240'}
+model_infos.append(get_model_info(**run))
+del run
+
+[print(f) for f in model_infos]
