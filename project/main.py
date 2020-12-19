@@ -5,11 +5,12 @@ from time import perf_counter
 import sys
 sys.path.insert(0, './models')
 
-from models.nasnet import NASNetALarge
+from models.nasnet import NASNetALarge, NASNetAMobile
 from models.mobile_cv.model_zoo.models.fbnet_v2 import fbnet
 from models.MnasNet import MnasNet
 from models.mobilenet import MobileNetV3
 from efficientnet_pytorch import EfficientNet
+from models.DSNAS.load_DSNAS_model import load
 
 def get_model_info(model, name):
     model.eval()
@@ -24,9 +25,9 @@ def get_model_info(model, name):
     inference_runs = 20
     
     if name == 'Inception-v3':
-        input_tensor = torch.rand(32, 3, 299, 299).to('cuda:0')
+        input_tensor = torch.rand(16, 3, 299, 299).to('cuda:0')
     else:
-        input_tensor = torch.rand(32, 3, 224, 224).to('cuda:0')
+        input_tensor = torch.rand(16, 3, 224, 224).to('cuda:0')
     
     start_time = perf_counter()
     for _ in range(inference_runs):
@@ -42,6 +43,10 @@ def get_model_info(model, name):
     }
     
     return model_info
+
+# nasnet_mobile = NASNetAMobile()
+# model_info = get_model_info(nasnet_mobile, 'NASNet-A Small')
+# print(model_info)
 
 # nasnet = NASNetALarge()
 # model_info = get_model_info(nasnet, 'NASNet-A Large')
@@ -82,3 +87,7 @@ def get_model_info(model, name):
 # resent50 = torch.hub.load('pytorch/vision:v0.6.0', 'resnet50', pretrained=False)
 # model_info = get_model_info(resent50, 'ResNet-50')
 # print(model_info)
+
+dsnas_240 = load()
+model_info = get_model_info(dsnas_240, name='DSNASsearch240')
+print(model_info))
