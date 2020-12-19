@@ -123,50 +123,50 @@ model_infos = []
 # del run
 # torch.cuda.empty_cache()
 
-try:
-    run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'mobilenet_v2', pretrained=True), 'name': 'MobileNet-V2'}
-    model_infos.append(get_model_info(**run))
-except Exception as e:
-    print(e)
-    pass
-del run
-torch.cuda.empty_cache()
+# try:
+#     run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'mobilenet_v2', pretrained=True), 'name': 'MobileNet-V2'}
+#     model_infos.append(get_model_info(**run))
+# except Exception as e:
+#     print(e)
+#     pass
+# del run
+# torch.cuda.empty_cache()
 
-try:
-    run = {'model': MobileNetV3(mode='large'), 'name': 'MobileNet-V3'}
-    model_infos.append(get_model_info(**run))
-except Exception as e:
-    print(e)
-    pass
-del run
-torch.cuda.empty_cache()
+# try:
+#     run = {'model': MobileNetV3(mode='large'), 'name': 'MobileNet-V3'}
+#     model_infos.append(get_model_info(**run))
+# except Exception as e:
+#     print(e)
+#     pass
+# del run
+# torch.cuda.empty_cache()
 
-try:
-    run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'resnet50', pretrained=False), 'name': 'ResNet-50'}
-    model_infos.append(get_model_info(**run))
-except Exception as e:
-    print(e)
-    pass
-del run
-torch.cuda.empty_cache()
+# try:
+#     run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'resnet50', pretrained=False), 'name': 'ResNet-50'}
+#     model_infos.append(get_model_info(**run))
+# except Exception as e:
+#     print(e)
+#     pass
+# del run
+# torch.cuda.empty_cache()
 
-try:
-    run = {'model': load(), 'name': 'DSNASsearch240'}
-    model_infos.append(get_model_info(**run))
-except Exception as e:
-    print(e)
-    pass
-del run
-torch.cuda.empty_cache()
+# try:
+#     run = {'model': load(), 'name': 'DSNASsearch240'}
+#     model_infos.append(get_model_info(**run))
+# except Exception as e:
+#     print(e)
+#     pass
+# del run
+# torch.cuda.empty_cache()
 
-try:
-    run = {'model': EfficientNet.from_name('efficientnet-b5'), 'name': 'EfficientNet-B5'}
-    model_infos.append(get_model_info(**run))
-except Exception as e:
-    print(e)
-    pass
-del run
-torch.cuda.empty_cache()
+# try:
+#     run = {'model': EfficientNet.from_name('efficientnet-b5'), 'name': 'EfficientNet-B5'}
+#     model_infos.append(get_model_info(**run))
+# except Exception as e:
+#     print(e)
+#     pass
+# del run
+# torch.cuda.empty_cache()
 
 try:
     run = {'model': EfficientNet.from_name('efficientnet-b4'), 'name': 'EfficientNet-B4'}
