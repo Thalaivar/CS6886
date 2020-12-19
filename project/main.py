@@ -56,7 +56,8 @@ try:
     model_infos.append(get_model_info(**run))
     del run
     torch.cuda.empty_cache()
-except:
+except Exception as e:
+    print(e)
     pass
 
 try:
@@ -64,7 +65,8 @@ try:
     model_infos.append(get_model_info(**run))
     del run
     torch.cuda.empty_cache()
-except:
+except Exception as e:
+    print(e)
     pass
 
 try:
@@ -72,7 +74,8 @@ try:
     model_infos.append(get_model_info(**run))
     del run
     torch.cuda.empty_cache()
-except:
+except Exception as e:
+    print(e)
     pass
 
 try:
@@ -80,7 +83,8 @@ try:
     model_infos.append(get_model_info(**run))
     del run
     torch.cuda.empty_cache()
-except:
+except Exception as e:
+    print(e)
     pass
 
 try:
@@ -88,7 +92,8 @@ try:
     model_infos.append(get_model_info(**run))
     del run
     torch.cuda.empty_cache()
-except:
+except Exception as e:
+    print(e)
     pass
 
 try:
@@ -96,7 +101,8 @@ try:
     model_infos.append(get_model_info(**run))
     del run
     torch.cuda.empty_cache()
-except:
+except Exception as e:
+    print(e)
     pass
 
 try:
@@ -104,7 +110,8 @@ try:
     model_infos.append(get_model_info(**run))
     del run
     torch.cuda.empty_cache()
-except:
+except Exception as e:
+    print(e)
     pass
 
 try:
@@ -112,7 +119,8 @@ try:
     model_infos.append(get_model_info(**run))
     del run
     torch.cuda.empty_cache()
-except:
+except Exception as e:
+    print(e)
     pass
 
 try:
@@ -120,7 +128,8 @@ try:
     model_infos.append(get_model_info(**run))
     del run
     torch.cuda.empty_cache()
-except:
+except Exception as e:
+    print(e)
     pass
 
 try:
@@ -128,7 +137,8 @@ try:
     model_infos.append(get_model_info(**run))
     del run
     torch.cuda.empty_cache()
-except:
+except Exception as e:
+    print(e)
     pass
 
 try:
@@ -136,7 +146,8 @@ try:
     model_infos.append(get_model_info(**run))
     del run
     torch.cuda.empty_cache()
-except:
+except Exception as e:
+    print(e)
     pass
 
 try:
@@ -144,7 +155,8 @@ try:
     model_infos.append(get_model_info(**run))
     del run
     torch.cuda.empty_cache()
-except:
+except Exception as e:
+    print(e)
     pass
 
 try:
@@ -152,7 +164,8 @@ try:
     model_infos.append(get_model_info(**run))
     del run
     torch.cuda.empty_cache()
-except:
+except Exception as e:
+    print(e)
     pass
 
 try:
@@ -160,7 +173,8 @@ try:
     model_infos.append(get_model_info(**run))
     del run
     torch.cuda.empty_cache()
-except:
+except Exception as e:
+    print(e)
     pass
 
 [print(f) for f in model_infos]
