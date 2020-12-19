@@ -55,126 +55,126 @@ try:
     run = {'model': NASNetAMobile(), 'name': 'NASNetA-Small'}
     model_infos.append(get_model_info(**run))
     del run
-    torch.cuda.empty_cache()
 except Exception as e:
     print(e)
     pass
+torch.cuda.empty_cache()
 
 try:
     run = {'model': NASNetALarge(), 'name': 'NASNetA-Large'}
     model_infos.append(get_model_info(**run))
     del run
-    torch.cuda.empty_cache()
 except Exception as e:
     print(e)
     pass
+torch.cuda.empty_cache()
 
 try:
     run = {'model': fbnet('dmasking_f4'), 'name': 'FBNet-V2'}
     model_infos.append(get_model_info(**run))
     del run
-    torch.cuda.empty_cache()
 except Exception as e:
     print(e)
     pass
+torch.cuda.empty_cache()
 
 try:
     run = {'model': MnasNet(), 'name': 'MNasNet'}
     model_infos.append(get_model_info(**run))
     del run
-    torch.cuda.empty_cache()
 except Exception as e:
     print(e)
     pass
+torch.cuda.empty_cache()
 
 try:
     run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'inception_v3', pretrained=False), 'name': 'Inception-V3'}
     model_infos.append(get_model_info(**run))
     del run
-    torch.cuda.empty_cache()
 except Exception as e:
     print(e)
     pass
+torch.cuda.empty_cache()
 
 try:
     run = {'model': EfficientNet.from_name('efficientnet-b7'), 'name': 'EfficientNet-B7'}
     model_infos.append(get_model_info(**run))
     del run
-    torch.cuda.empty_cache()
 except Exception as e:
     print(e)
     pass
+torch.cuda.empty_cache()
 
 try:
     run = {'model': EfficientNet.from_name('efficientnet-b0'), 'name': 'EfficientNet-B0'}
     model_infos.append(get_model_info(**run))
     del run
-    torch.cuda.empty_cache()
 except Exception as e:
     print(e)
     pass
+torch.cuda.empty_cache()
 
 try:
     run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'resnext101_32x8d', pretrained=False), 'name': 'ResNeXt-101'}
     model_infos.append(get_model_info(**run))
     del run
-    torch.cuda.empty_cache()
 except Exception as e:
     print(e)
     pass
+torch.cuda.empty_cache()
 
 try:
     run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'mobilenet_v2', pretrained=True), 'name': 'MobileNet-V2'}
     model_infos.append(get_model_info(**run))
     del run
-    torch.cuda.empty_cache()
 except Exception as e:
     print(e)
     pass
+torch.cuda.empty_cache()
 
 try:
     run = {'model': MobileNetV3(mode='large'), 'name': 'MobileNet-V3'}
     model_infos.append(get_model_info(**run))
     del run
-    torch.cuda.empty_cache()
 except Exception as e:
     print(e)
     pass
+torch.cuda.empty_cache()
 
 try:
     run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'resnet50', pretrained=False), 'name': 'ResNet-50'}
     model_infos.append(get_model_info(**run))
     del run
-    torch.cuda.empty_cache()
 except Exception as e:
     print(e)
     pass
+torch.cuda.empty_cache()
 
 try:
     run = {'model': load(), 'name': 'DSNASsearch240'}
     model_infos.append(get_model_info(**run))
     del run
-    torch.cuda.empty_cache()
 except Exception as e:
     print(e)
     pass
+torch.cuda.empty_cache()
 
 try:
     run = {'model': EfficientNet.from_name('efficientnet-b5'), 'name': 'EfficientNet-B5'}
     model_infos.append(get_model_info(**run))
     del run
-    torch.cuda.empty_cache()
 except Exception as e:
     print(e)
     pass
+torch.cuda.empty_cache()
 
 try:
     run = {'model': EfficientNet.from_name('efficientnet-b4'), 'name': 'EfficientNet-B4'}
     model_infos.append(get_model_info(**run))
     del run
-    torch.cuda.empty_cache()
 except Exception as e:
     print(e)
     pass
+torch.cuda.empty_cache()
 
 [print(f) for f in model_infos]
