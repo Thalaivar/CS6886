@@ -105,23 +105,23 @@ model_infos = []
 # del run
 # torch.cuda.empty_cache()
 
-try:
-    run = {'model': EfficientNet.from_name('efficientnet-b0'), 'name': 'EfficientNet-B0'}
-    model_infos.append(get_model_info(**run))
-except Exception as e:
-    print(e)
-    pass
-del run
-torch.cuda.empty_cache()
+# try:
+#     run = {'model': EfficientNet.from_name('efficientnet-b0'), 'name': 'EfficientNet-B0'}
+#     model_infos.append(get_model_info(**run))
+# except Exception as e:
+#     print(e)
+#     pass
+# del run
+# torch.cuda.empty_cache()
 
-try:
-    run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'resnext101_32x8d', pretrained=False), 'name': 'ResNeXt-101'}
-    model_infos.append(get_model_info(**run))
-except Exception as e:
-    print(e)
-    pass
-del run
-torch.cuda.empty_cache()
+# try:
+#     run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'resnext101_32x8d', pretrained=False), 'name': 'ResNeXt-101'}
+#     model_infos.append(get_model_info(**run))
+# except Exception as e:
+#     print(e)
+#     pass
+# del run
+# torch.cuda.empty_cache()
 
 try:
     run = {'model': torch.hub.load('pytorch/vision:v0.6.0', 'mobilenet_v2', pretrained=True), 'name': 'MobileNet-V2'}
