@@ -22,12 +22,12 @@ def get_model_info(model, name):
     total_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     trainable_params = sum(p.numel() for p in model.parameters())
     
-    inference_runs = 20
+    inference_runs = 1000
     
     if name == 'Inception-v3':
-        input_tensor = torch.rand(16, 3, 299, 299).to('cuda:0')
+        input_tensor = torch.rand(4, 3, 299, 299).to('cuda:0')
     else:
-        input_tensor = torch.rand(16, 3, 224, 224).to('cuda:0')
+        input_tensor = torch.rand(4, 3, 224, 224).to('cuda:0')
     
     start_time = perf_counter()
     for _ in range(inference_runs):
