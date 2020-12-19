@@ -60,14 +60,14 @@ except Exception as e:
 del run
 torch.cuda.empty_cache()
 
-try:
-    run = {'model': NASNetALarge(), 'name': 'NASNetA-Large'}
-    model_infos.append(get_model_info(**run))
-except Exception as e:
-    print(e)
-    pass
-del run
-torch.cuda.empty_cache()
+# try:
+#     run = {'model': NASNetALarge(), 'name': 'NASNetA-Large'}
+#     model_infos.append(get_model_info(**run))
+# except Exception as e:
+#     print(e)
+#     pass
+# del run
+# torch.cuda.empty_cache()
 
 try:
     run = {'model': fbnet('dmasking_f4'), 'name': 'FBNet-V2'}
