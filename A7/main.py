@@ -130,4 +130,13 @@ def get_execution_time(routine, input_dims, filter_dims, device=None):
     print(f'Execution time for {routine} on device {device}: {t_elapsed*1000/runs} ms')
 
 if __name__ == "__main__":
-    verify_output()
+    input_dims, filter_dims = [8, 3, 32, 32], [64, 3, 3, 3]
+    get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
+    get_execution_time(routine='CP', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
+    get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
+    # get_execution_time(routine='WG', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
+    input_dims = [128, 3, 32, 32]
+    get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims)
+    get_execution_time(routine='CP', input_dims=input_dims, filter_dims=filter_dims)
+    get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims)
+    # get_execution_time(routine='WG', input_dims=input_dims, filter_dims=filter_dims)
