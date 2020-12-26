@@ -1,6 +1,7 @@
 import torch
 import numpy as np
 
+from time import perf_counter
 from torch.nn import Unfold
 from winograd import Winograd
 from fft_conv import fft_conv
@@ -97,6 +98,28 @@ def verify_output():
     out = tucker_decomp(input_tensor, weight, determine_rank=True)
 
     print(f'Max discrepancy in results = {(conv2d(input_tensor, weight) - out).abs().max()}')
+
+def get_execution_time(routine, input_dims, filter_dims):
+    ops = {
+        'DC': direct_conv,
+        'im2col': im2col,
+        'WG': winograd,
+        'FFT': fft,
+        'CP': cp_decomp
+    }
+
+    op = ops[routine]
+    device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
+    assert input_dims[1] == filter_dims[1]
+    weight = Variable(torch.rand(*filter_dims, dtype=torch.float32), requires_grad=True)
+    input_tensor = torch.rand(*input_dims, dtype=torch.float32)
+
+    runs = 100
+    start_time = perf_counter()
+    for _ in range(runs):
+        out = op(input_tensor, weight)
+    t_elapsed = perf_counter() - start_time
+    print(f'Execution time for {routine} on device {device}: {t_elapsed/runs} ms')
 
 if __name__ == "__main__":
     verify_output()
