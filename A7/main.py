@@ -138,7 +138,7 @@ if __name__ == "__main__":
     input_dims[0] = 128
     get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims)
     get_execution_time(routine='CP', input_dims=input_dims, filter_dims=filter_dims)
-    get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims)
+    # get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims)
     # get_execution_time(routine='WG', input_dims=input_dims, filter_dims=filter_dims)
 
     input_dims, filter_dims = [8, 3, 224, 224], [64, 3, 5, 5]
@@ -149,7 +149,7 @@ if __name__ == "__main__":
     input_dims[0] = 128
     get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims)
     get_execution_time(routine='CP', input_dims=input_dims, filter_dims=filter_dims)
-    get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims)
+    # get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims)
     # get_execution_time(routine='WG', input_dims=input_dims, filter_dims=filter_dims)
 
     input_dims, filter_dims = [8, 3, 224, 224], [64, 3, 7, 7]
@@ -160,7 +160,7 @@ if __name__ == "__main__":
     input_dims[0] = 128
     get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims)
     get_execution_time(routine='CP', input_dims=input_dims, filter_dims=filter_dims)
-    get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims)
+    # get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims)
     # get_execution_time(routine='WG', input_dims=input_dims, filter_dims=filter_dims)
 
     input_dims, filter_dims = [8, 3, 224, 224], [64, 3, 3, 5]
@@ -171,7 +171,7 @@ if __name__ == "__main__":
     input_dims[0] = 128
     get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims)
     get_execution_time(routine='CP', input_dims=input_dims, filter_dims=filter_dims)
-    get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims)
+    # get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims)
     # get_execution_time(routine='WG', input_dims=input_dims, filter_dims=filter_dims)
 
     input_dims, filter_dims = [8, 3, 224, 224], [64, 3, 3, 7]
@@ -182,5 +182,5 @@ if __name__ == "__main__":
     input_dims[0] = 128
     get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims)
     get_execution_time(routine='CP', input_dims=input_dims, filter_dims=filter_dims)
-    get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims)
+    # get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims)
     # get_execution_time(routine='WG', input_dims=input_dims, filter_dims=filter_dims)
