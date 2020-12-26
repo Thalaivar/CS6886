@@ -130,46 +130,35 @@ def get_execution_time(routine, input_dims, filter_dims, device=None):
     print(f'Routine: {routine} ; device: {device} ; time: {t_elapsed*1000/runs} ms ; input: {input_dims} ; filter: {filter_dims}')
 
 if __name__ == "__main__":
-    input_dims, filter_dims = [8, 3, 64, 64], [16, 3, 5, 5]
+    input_dims, filter_dims = [8, 3, 720, 720], [16, 3, 3, 3]
     get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
     get_execution_time(routine='CP', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
     get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
     # get_execution_time(routine='WG', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
     input_dims[0] = 128
-    get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims)
+    # get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims)
     get_execution_time(routine='CP', input_dims=input_dims, filter_dims=filter_dims)
     get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims)
     # get_execution_time(routine='WG', input_dims=input_dims, filter_dims=filter_dims)
 
-    input_dims, filter_dims = [8, 3, 64, 64], [16, 3, 7, 7]
+    input_dims, filter_dims = [8, 3, 720, 720], [16, 3, 5, 5]
     get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
     get_execution_time(routine='CP', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
     get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
     # get_execution_time(routine='WG', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
     input_dims[0] = 128
-    get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims)
+    # get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims)
     get_execution_time(routine='CP', input_dims=input_dims, filter_dims=filter_dims)
     get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims)
     # get_execution_time(routine='WG', input_dims=input_dims, filter_dims=filter_dims)
 
-    input_dims, filter_dims = [8, 3, 64, 64], [16, 3, 3, 5]
+    input_dims, filter_dims = [8, 3, 720, 720], [16, 3, 7, 7]
     get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
     get_execution_time(routine='CP', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
     get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
     # get_execution_time(routine='WG', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
     input_dims[0] = 128
-    get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims)
-    get_execution_time(routine='CP', input_dims=input_dims, filter_dims=filter_dims)
-    get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims)
-    # get_execution_time(routine='WG', input_dims=input_dims, filter_dims=filter_dims)
-
-    input_dims, filter_dims = [8, 3, 64, 64], [64, 3, 3, 7]
-    get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
-    get_execution_time(routine='CP', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
-    get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
-    # get_execution_time(routine='WG', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
-    input_dims[0] = 128
-    get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims)
+    # get_execution_time(routine='im2col', input_dims=input_dims, filter_dims=filter_dims)
     get_execution_time(routine='CP', input_dims=input_dims, filter_dims=filter_dims)
     get_execution_time(routine='FFT', input_dims=input_dims, filter_dims=filter_dims)
     # get_execution_time(routine='WG', input_dims=input_dims, filter_dims=filter_dims)
