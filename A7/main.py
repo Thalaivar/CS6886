@@ -1,6 +1,7 @@
 import torch
 import numpy as np
 
+from functools import partial
 from time import perf_counter
 from torch.nn import Unfold
 from winograd import Winograd
@@ -65,10 +66,10 @@ def fft(input_tensor: torch.Tensor, filter: torch.Tensor) -> torch.Tensor:
     out = fft_conv(input_tensor, filter)
     return out
 
-def cp_decomp(input_tensor: torch.Tensor, filter: torch.Tensor) -> torch.Tensor:
+def cp_decomp(input_tensor: torch.Tensor, filter: torch.Tensor, device) -> torch.Tensor:
     # rank = determine_rank_for_cp_decomp(filter, rank_range=[20, 70], input_tensor=input_tensor) if rank is None else rank
     rank = max(filter.shape) // 3
-    conv = cp_decomposition(filter, rank=rank)
+    conv = cp_decomposition(filter, rank=rank).to(device)
     return conv(input_tensor)
 
 def tucker_decomp(input_tensor: torch.Tensor, filter: torch.Tensor, determine_rank=False) -> torch.Tensor:
@@ -105,7 +106,7 @@ def get_execution_time(routine, input_dims, filter_dims, device=None):
         'im2col': im2col,
         'WG': winograd,
         'FFT': fft,
-        'CP': cp_decomp
+        'CP': partial(cp_decomp, device=device)
     }
 
     op = ops[routine]
@@ -116,8 +117,8 @@ def get_execution_time(routine, input_dims, filter_dims, device=None):
             input_dims[0] = 128
 
     assert input_dims[1] == filter_dims[1]
-    weight = Variable(torch.rand(*filter_dims, dtype=torch.float32), requires_grad=True)
-    input_tensor = torch.rand(*input_dims, dtype=torch.float32)
+    weight = Variable(torch.rand(*filter_dims, dtype=torch.float32), requires_grad=True).to(device)
+    input_tensor = torch.rand(*input_dims, dtype=torch.float32).to(device)
 
     runs = 100
     start_time = perf_counter()

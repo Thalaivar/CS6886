@@ -8,7 +8,7 @@ from tensorly.decomposition import parafac, partial_tucker
 
 
 def cp_decomposition(W: torch.Tensor, rank) -> nn.Module:
-    last, first, vertical, horizontal = parafac(W.detach().numpy(), rank=rank, init='svd')[1]
+    last, first, vertical, horizontal = parafac(W.cpu().detach().numpy(), rank=rank, init='svd')[1]
     
     conv1 = nn.Conv2d(in_channels=first.shape[0], out_channels=rank, kernel_size=1, bias=False)
     conv2 = nn.Conv2d(in_channels=rank, out_channels=rank, kernel_size=(vertical.shape[0], 1), groups=rank, bias=False)
