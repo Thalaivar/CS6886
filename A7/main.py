@@ -99,7 +99,7 @@ def verify_output():
 
     print(f'Max discrepancy in results = {(conv2d(input_tensor, weight) - out).abs().max()}')
 
-def get_execution_time(routine, input_dims, filter_dims):
+def get_execution_time(routine, input_dims, filter_dims, device=None):
     ops = {
         'DC': direct_conv,
         'im2col': im2col,
@@ -109,7 +109,12 @@ def get_execution_time(routine, input_dims, filter_dims):
     }
 
     op = ops[routine]
-    device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
+    
+    if device is None:
+        device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
+        if torch.cuda.is_available():
+            input_dims[0] = 128
+
     assert input_dims[1] == filter_dims[1]
     weight = Variable(torch.rand(*filter_dims, dtype=torch.float32), requires_grad=True)
     input_tensor = torch.rand(*input_dims, dtype=torch.float32)
