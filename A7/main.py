@@ -84,7 +84,7 @@ def verify_output():
     from torch.nn.functional import conv2d
 
     N, C, H, W = 8, 3, 224, 224
-    M, R, S = 16, 5, 5
+    M, R, S = 32, 7, 7 
 
     weight = Variable(torch.rand(M, C, R, S, dtype=torch.float32), requires_grad=True)
     input_tensor = torch.rand(N, C, H, W, dtype=torch.float32)

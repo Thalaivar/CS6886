@@ -37,6 +37,7 @@ def determine_rank_for_cp_decomp(W: torch.Tensor, rank_range: int, input_tensor:
     return min_rank
 
 def estimate_ranks(W: torch.Tensor):
+    W = W.detach().numpy()
     unfold_0 = tl.base.unfold(W, 0) 
     unfold_1 = tl.base.unfold(W, 1)
     _, diag_0, _, _ = VBMF.EVBMF(unfold_0)
@@ -48,7 +49,6 @@ def tucker(W: torch.Tensor, ranks):
     core, [last, first] = partial_tucker(W.detach().numpy(), modes=[0, 1], rank=ranks, init='svd')   
     kernel_size = tuple(W.shape[2:])
 
-    # A pointwise convolution that reduces the channels from S to R3
     conv1 = nn.Conv2d(in_channels=first.shape[0], out_channels=first.shape[1], kernel_size=1, bias=False)
     conv2 = nn.Conv2d(in_channels=core.shape[1], out_channels=core.shape[0], kernel_size=kernel_size, bias=False)
     conv3 = nn.Conv2d(in_channels=last.shape[1], out_channels=last.shape[0], kernel_size=1, bias=False)
