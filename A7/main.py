@@ -131,27 +131,20 @@ def get_execution_time(routine, input_dims, filter_dims, device=None):
 
 if __name__ == "__main__":
     input_dims, filter_dims = [8, 3, 32, 32], [64, 3, 3, 3]
-    input_dims[0] = 128
-    get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
-    get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims)
+    get_execution_time(routine='', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
 
     input_dims, filter_dims = [8, 3, 32, 32], [8, 3, 3, 3]
+    get_execution_time(routine='', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
     input_dims[0] = 128
-    get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
-    get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims)
+    get_execution_time(routine='', input_dims=input_dims, filter_dims=filter_dims)
 
     input_dims, filter_dims = [8, 3, 32, 32], [16, 3, 3, 3]
+    get_execution_time(routine='', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
     input_dims[0] = 128
-    get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
-    get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims)
+    get_execution_time(routine='', input_dims=input_dims, filter_dims=filter_dims)
 
-    input_dims, filter_dims = [8, 3, 32, 32], [512, 3, 3, 3]
+
+    input_dims, filter_dims = [8, 3, 32, 32], [64, 3, 16, 16]
+    get_execution_time(routine='', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
     input_dims[0] = 128
-    get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
-    get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims)
-
-    input_dims, filter_dims = [8, 3, 32, 32], [64, 3, 16, ]
-    input_dims[0] = 128
-    get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
-    get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims)
-
+    get_execution_time(routine='', input_dims=input_dims, filter_dims=filter_dims)
