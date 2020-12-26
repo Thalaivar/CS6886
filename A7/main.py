@@ -127,7 +127,7 @@ def get_execution_time(routine, input_dims, filter_dims, device=None):
     for _ in range(runs):
         out = op(input_tensor, weight)
     t_elapsed = perf_counter() - start_time
-    print(f'Execution time for {routine} on device {device}: {t_elapsed*1000/runs} ms')
+    print(f'Routine: {routine} ; device: {device} ; time: {t_elapsed*1000/runs} ms ; input: {input_dims} ; filter: {filter_dims}')
 
 if __name__ == "__main__":
     input_dims, filter_dims = [8, 3, 64, 64], [16, 3, 5, 5]
