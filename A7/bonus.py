@@ -7,7 +7,7 @@ import tensorly as tl
 from tensorly.decomposition import parafac, partial_tucker
 
 
-def cp_decomposition(W: torch.Tensor, rank) -> nn.Module:
+def cp_decomposition(W: torch.Tensor, rank, device) -> nn.Module:
     last, first, vertical, horizontal = parafac(W.cpu().detach().numpy(), rank=rank, init='svd')[1]
     
     conv1 = nn.Conv2d(in_channels=first.shape[0], out_channels=rank, kernel_size=1, bias=False)
@@ -28,7 +28,7 @@ def determine_rank_for_cp_decomp(W: torch.Tensor, rank_range: int, input_tensor:
 
     min_delta = np.infty
     for rank in tqdm(range(*rank_range)):
-        decomp_conv = cp_decomposition(W, rank)
+        decomp_conv = cp_decomposition(W, rank, device)
         delta = (conv2d(input_tensor, W) - decomp_conv(input_tensor)).abs().max()
         if delta < min_delta:
             min_rank = rank

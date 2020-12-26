@@ -69,7 +69,8 @@ def fft(input_tensor: torch.Tensor, filter: torch.Tensor) -> torch.Tensor:
 def cp_decomp(input_tensor: torch.Tensor, filter: torch.Tensor, device) -> torch.Tensor:
     # rank = determine_rank_for_cp_decomp(filter, rank_range=[20, 70], input_tensor=input_tensor) if rank is None else rank
     rank = max(filter.shape) // 3
-    conv = cp_decomposition(filter, rank=rank).to(device)
+    conv = cp_decomposition(filter, rank=rank)
+    conv.to(device)
     return conv(input_tensor)
 
 def tucker_decomp(input_tensor: torch.Tensor, filter: torch.Tensor, determine_rank=False) -> torch.Tensor:
@@ -101,6 +102,11 @@ def verify_output():
     print(f'Max discrepancy in results = {(conv2d(input_tensor, weight) - out).abs().max()}')
 
 def get_execution_time(routine, input_dims, filter_dims, device=None):
+    if device is None:
+        device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
+        if torch.cuda.is_available():
+            input_dims[0] = 128
+    
     ops = {
         'DC': direct_conv,
         'im2col': im2col,
@@ -111,10 +117,6 @@ def get_execution_time(routine, input_dims, filter_dims, device=None):
 
     op = ops[routine]
     
-    if device is None:
-        device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
-        if torch.cuda.is_available():
-            input_dims[0] = 128
 
     assert input_dims[1] == filter_dims[1]
     weight = Variable(torch.rand(*filter_dims, dtype=torch.float32), requires_grad=True).to(device)
