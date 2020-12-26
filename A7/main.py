@@ -122,7 +122,7 @@ def get_execution_time(routine, input_dims, filter_dims, device=None):
     weight = Variable(torch.rand(*filter_dims, dtype=torch.float32), requires_grad=True).to(device)
     input_tensor = torch.rand(*input_dims, dtype=torch.float32).to(device)
 
-    runs = 100
+    runs = 1
     start_time = perf_counter()
     for _ in range(runs):
         out = op(input_tensor, weight)
@@ -130,22 +130,9 @@ def get_execution_time(routine, input_dims, filter_dims, device=None):
     print(f'Routine: {routine} ; device: {device} ; time: {t_elapsed*1000/runs} ms ; input: {input_dims} ; filter: {filter_dims}')
 
 if __name__ == "__main__":
-    input_dims, filter_dims = [8, 3, 32, 32], [64, 3, 3, 3]
-    get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
-
-    input_dims, filter_dims = [8, 3, 32, 32], [8, 3, 3, 3]
-    get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
-    input_dims[0] = 128
-    get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims)
-
     input_dims, filter_dims = [8, 3, 32, 32], [16, 3, 3, 3]
     get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
-    input_dims[0] = 128
-    get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims)
-
 
     input_dims, filter_dims = [8, 3, 32, 32], [64, 3, 16, 16]
     get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims, device='cpu')
-    input_dims[0] = 128
-    get_execution_time(routine='DC', input_dims=input_dims, filter_dims=filter_dims)
 
