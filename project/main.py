@@ -14,19 +14,14 @@ from efficientnet_pytorch import EfficientNet
 def get_model_info(model, name):
     model.eval()
     model.to('cuda:0')
-<<<<<<< HEAD
-    
-    wandb.init(project='sysdl-term-project', name=f'{model}-inference')
-=======
 
     wandb.init(project='sysdl-term-project', name=f'{name}-inference' )
->>>>>>> e2c14f4711c9e9548714c819a458582749afb898
     wandb.watch(model)
 
     total_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     trainable_params = sum(p.numel() for p in model.parameters())
     
-    inference_runs = 20
+    inference_runs = 1000
     
     if name == 'Inception-v3':
         input_tensor = torch.rand(32, 3, 299, 299).to('cuda:0')
