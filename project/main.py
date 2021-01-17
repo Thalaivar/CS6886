@@ -28,16 +28,18 @@ def get_model_info(model, name):
     else:
         input_tensor = torch.rand(32, 3, 224, 224).to('cuda:0')
     
-    start_time = perf_counter()
+    inference_latency = []
     for _ in range(inference_runs):
+        start_time = perf_counter()
         out = model(input_tensor)
-    inference_latency = perf_counter() - start_time
-    
+        inference_latency.append(perf_counter() - start_time)
+    inference_latency = np.array(inference_latency)
+
     model_info = {
         'Name': name,
         'Trainable Parameters': trainable_params,
         'Total Parameters': total_params,
-        'Inference Latency': inference_latency/inference_runs,
+        'Inference Latency': [inference_latency.mean(), inference_latency.stddev()],
         'GPU Name': torch.cuda.get_device_name()
     }
     
